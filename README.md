@@ -2,11 +2,10 @@
 A messaging board built in mongoDB. Or a reddit-clone in short.
 
 ## Wireframes
-
-
-### Version 0.1
-<img src="https://i.ibb.co/fGKYzjp/image.png" alt="image" border="0">
-<img src="https://i.ibb.co/CW1g4kz/image.png" alt="image" border="0">
+<img src="https://i.ibb.co/k6DmtG5/image.png" alt="image" border="0">
+<img src="https://i.ibb.co/syX80tR/image.png" alt="image" border="0">
+<img src="https://i.ibb.co/0sqw93k/image.png" alt="image" border="0">
+<img src="https://i.ibb.co/pbVkPXx/image.png" alt="image" border="0">
 
 ## User Stories
 
