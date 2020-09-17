@@ -26,6 +26,14 @@ Registered users:
 1. delete post they created
 1. delete their account
 
+## Milestones
+- Working Server with Routes
+- Models with Schema setup
+- CRUD functionality
+- Voting System
+- User Authentication
+- Views Styling
+
 ## Stretch Goals
 - sub-communities
 - display pictures in posts
