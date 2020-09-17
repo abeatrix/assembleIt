@@ -11,12 +11,6 @@ A messaging board built in mongoDB. Or a reddit-clone in short.
 
 Navbar - ![#e3f2fd](https://via.placeholder.com/15/e3f2fd/000000?text=+) `#e3f2fd` Navbar Font - ![#307DF6](https://via.placeholder.com/15/307DF6/000000?text=+) `#307DF6` Body Font - ![#007CFF](https://via.placeholder.com/15/007CFF/000000?text=+) `#007CFF`  Sub-body Font- ![#989898](https://via.placeholder.com/15/989898/000000?text=+) `#989898`
 
-### Version 0.1
-<img src="https://i.ibb.co/k6DmtG5/image.png" alt="image" border="0">
-<img src="https://i.ibb.co/syX80tR/image.png" alt="image" border="0">
-<img src="https://i.ibb.co/0sqw93k/image.png" alt="image" border="0">
-<img src="https://i.ibb.co/pbVkPXx/image.png" alt="image" border="0">
-
 ## User Stories
 
 ## ERD
@@ -29,8 +23,6 @@ Registered users:
 1. allowed to edit their username
 1. delete post they created
 1. delete their account
-
-
 
 ## Stretch Goals
 - sub-communities
@@ -51,3 +43,9 @@ Registered users:
 - sweet alert
 - express session
 - bcrypt
+
+## Version 0.1
+<img src="https://i.ibb.co/k6DmtG5/image.png" alt="image" border="0">
+<img src="https://i.ibb.co/syX80tR/image.png" alt="image" border="0">
+<img src="https://i.ibb.co/0sqw93k/image.png" alt="image" border="0">
+<img src="https://i.ibb.co/pbVkPXx/image.png" alt="image" border="0">
