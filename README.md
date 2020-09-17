@@ -8,10 +8,8 @@ A messaging board built in mongoDB. Or a reddit-clone in short.
 <img src="https://i.ibb.co/vZvhQqK/assemble-It-WF-005.png" alt="assemble-It-WF-005" border="0">
 <img src="https://i.ibb.co/S3HDh6k/assemble-It-WF-006.png" alt="assemble-It-WF-006" border="0">
 </br> Color Used: </br>
-<br>Navbar - ![#e3f2fd](https://via.placeholder.com/15/e3f2fd/000000?text=+) `#e3f2fd` 
-<br> Navbar Font - ![#307DF6](https://via.placeholder.com/15/307DF6/000000?text=+) `#307DF6` 
-<br> Body Font- ![#007CFF](https://via.placeholder.com/15/007CFF/000000?text=+) `#007CFF`
-<br> Sub-body Font - ![#989898](https://via.placeholder.com/15/989898/000000?text=+) `#989898`
+
+Navbar - ![#e3f2fd](https://via.placeholder.com/15/e3f2fd/000000?text=+) `#e3f2fd` Navbar Font - ![#307DF6](https://via.placeholder.com/15/307DF6/000000?text=+) `#307DF6` Body Font - ![#007CFF](https://via.placeholder.com/15/007CFF/000000?text=+) `#007CFF`  Sub-body Font- ![#989898](https://via.placeholder.com/15/989898/000000?text=+) `#989898`
 
 ### Version 0.1
 <img src="https://i.ibb.co/k6DmtG5/image.png" alt="image" border="0">
