@@ -10,7 +10,7 @@ A messaging board built in mongoDB. Or a reddit-clone in short.
 ## User Stories
 
 ## ERD
-<img src="https://i.ibb.co/8NrsKZp/assemble-It-ERD.jpg" alt="assemble-It-ERD" border="0">
+<img src="https://i.ibb.co/99zxtgT/assemble-It.jpg" alt="assemble-It" border="0">
 
 ## MVP
 A simple bulletin board that allows registered users to browse and create discussion threads.
