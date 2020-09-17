@@ -20,7 +20,7 @@ Navbar - ![#e3f2fd](https://via.placeholder.com/15/e3f2fd/000000?text=+) `#e3f2f
 ## User Stories
 
 ## ERD
-<img src="https://i.ibb.co/99zxtgT/assemble-It.jpg" alt="assemble-It" border="0">
+<img src="https://i.ibb.co/yBnv2YD/assemble-It.png" alt="assemble-It" border="0">
 
 ## MVP
 A simple bulletin board that allows registered users to browse and create discussion threads.
