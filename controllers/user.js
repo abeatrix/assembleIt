@@ -63,7 +63,7 @@ router.get(":/id/edit", (req, res) => {
             return res.send(err);
         }
         const context = { user: foundUser };
-        res.render("user/edit", context)
+        res.render("users/edit", context)
     });
 });
 
@@ -84,7 +84,7 @@ router.put("/:id", (req, res) => {
 
 // DELETE
 router.delete("/:id", (req, res) => {
-    db.User.findByIdAndDelete(req.params.id, (err, deletedUser) => {
+    db.User.findByIdAndDelete(req.params.id, (err, deletedUser) => {                                // remove posts by users after user is deleted
         if(err){
             console.log(err);
             return res.send(err);
