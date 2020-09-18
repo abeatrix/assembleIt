@@ -64,13 +64,21 @@ router.get(":/id/edit", (req, res) => {
         }
         const context = { user: foundUser };
         res.render("user/edit", context)
-    })
-})
+    });
+});
 
 
 
 // UPDATE
-
+router.put("/:id", (req, res) => {
+    db.User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedUser) => {
+        if(err){
+            console.log(err);
+            return res.send(err);
+        }
+        res.redirect(`users/${updatedUser._id}`);
+    });
+});
 
 
 
