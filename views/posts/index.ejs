@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Front Page</title>
+    <%- include('../partials/head.ejs', {title: "ALL POSTS"}) %>
   </head>
   <body>
     <main>
@@ -14,6 +12,8 @@
         </li>
         <% }) %>
       </ul>
+    <%- include('../partials/head.ejs', {title: "ALL POSTS"}) %>
+<body>
 
       <% if(posts.length === 0) { %>
       <p>There are no posts available yet.</p>
