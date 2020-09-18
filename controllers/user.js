@@ -18,7 +18,11 @@ router.get("/", async (req, res) => {
     }
 });
 
+// NEW VIEW
+router.get("/new", (req, res) => {
+    res.render("user/new")
+})
 
-
+// CREATE
 
 module.exports = router;
