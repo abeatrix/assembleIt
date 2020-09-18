@@ -35,7 +35,7 @@ router.post("/", (req, res) => {
             console.log(err);
             return res.send(err);
         }
-        res.redirect("/auth/login")
+        res.redirect("/auth/login")                                                                //redirect to login page after signup
     })
 })
 
