@@ -19,10 +19,7 @@ app.use((req, res, next) => {
 app.set('view engine', 'ejs');
 
 // view routes
-app.get("/", (req, res) => {
-    // render("file", context)
-    res.render("index");
-});
+app.use("/posts", controllers.post);
 
 
 
