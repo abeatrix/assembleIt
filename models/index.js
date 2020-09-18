@@ -1,7 +1,7 @@
 //HUB FOR MODELS AND DB CONNECTIONS
 const mongoose = require('mongoose');
 
-const connectionString = 'mongodb://localhost:27017/reddit-db';
+const connectionString = 'mongodb://localhost:27017/assembleIt-db';
 
 mongoose.connect(connectionString, {
     useNewUrlParser: true,

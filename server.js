@@ -15,6 +15,7 @@ const app = express();
 /* CONFIGURATION */
 const PORT = 4000;
 
+
 app.set("view engine", "ejs")
 
 // MIDDLEWARE
