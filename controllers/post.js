@@ -28,4 +28,21 @@ router.get("/newPost", (req, res) => {
     }
   });
 
+// create route
+  router.post("/", async function (req, res) {
+    try {
+    //   const createdPost = await db.Post.create(req.body);
+    //   TODO user created posts
+    //   const user = await db.User.findById(req.body.author);
+  
+      /* foundAuthor.articles.push(createdArticle);
+      await foundAuthor.save(); */
+  
+      res.redirect("/");
+    } catch (error) {
+      console.log(error);
+      res.send({ message: "Internal server error" });
+    }
+  });
+  
 module.exports = router;
