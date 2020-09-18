@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
         const context = {
             users: foundUsers,
         }
-        res.render("user/index", context);
+        res.render("users/index", context);
     } catch (err){
         console.log(err);
         res.send({ message: "Internal Server Error "});
@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
 
 // NEW VIEW
 router.get("/new", (req, res) => {
-    res.render("user/new")
+    res.render("users/new")
 })
 
 
@@ -30,7 +30,7 @@ router.get("/new", (req, res) => {
 // CREATE
 router.post("/", (req, res) => {
 
-    db.User.create(req.body, function (err, createdUser) {
+    db.User.create(req.body, (err, createdUser) => {
         if(err){
             console.log(err);
             return res.send(err);
@@ -42,7 +42,16 @@ router.post("/", (req, res) => {
 
 
 // SHOW
-
+router.get("/:id", (req, res) => {
+    db.User.findById(req.params.id).populate("posts").exec( (err, foundUser) => {                   //linking posts to user
+        if(err){
+            console.log(err);
+            return res.send(err);
+        }
+        const context = { user: foundUser };
+        res.render("users/profile", context);
+    });
+});
 
 
 
