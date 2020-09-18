@@ -13,25 +13,25 @@ router.get("/", (req, res) => {
             posts: foundPosts
         };
 
-        res.render("/", context);
+        res.render("posts/index", context);
     } catch (error) {
-        res.send(error);
+        res.send({ message: "Internal server error" });
     }
   });
 
 // new route
 router.get("/newPost", (req, res) => {
     try {
-        res.render("/newPost");
+        res.render("posts/newPost");
     } catch (error) {
-        res.send(error);
+        res.send({ message: "Internal server error" });
     }
   });
 
 // create route
   router.post("/", async function (req, res) {
     try {
-    //   const createdPost = await db.Post.create(req.body);
+        await db.Post.create(req.body);
     //   TODO user created posts
     //   const user = await db.User.findById(req.body.author);
   
@@ -44,5 +44,17 @@ router.get("/newPost", (req, res) => {
       res.send({ message: "Internal server error" });
     }
   });
-  
+
+  // show
+router.get("/:id", function (req, res) {
+    try {
+        const foundPost = db.Post.findById(req.params.id);
+        const context = {post: foundPost};
+
+        res.render("posts/show", context);
+    } catch (error) {
+        res.send({ message: "Internal server error" });
+    }
+  });
+
 module.exports = router;
