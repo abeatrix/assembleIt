@@ -20,6 +20,7 @@ app.set("view engine", "ejs")
 // MIDDLEWARE
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
+
 app.use(methodOverride("_method"));
 app.use(session({
     resave: false,
@@ -53,14 +54,16 @@ app.use("/", controllers.auth);
 // USER ROUTES
 app.use("/users", controllers.user);
 
+
 // POSTS ROUTES
 app.use("/posts", controllers.post);
+
 
 //COMMENTS ROUTES
 app.use("/comments", controllers.comment);
 
 
 // SERVER LISTENER
-app.listen(PORT, function(){
+app.listen(PORT, function () {
     console.log(`server up and running on PORT ${PORT}`)
 })
