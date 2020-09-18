@@ -15,7 +15,7 @@ router.post("/signup", async (req, res) => {
     try {
         const foundUser = await db.User.findOne({ username: req.body.username });
         if(foundUser){                                                                        // if username exists
-            return res.send({ message: "Username exists"});
+            return res.send({ message: "User Exists"});
         }
         const salt = await bcrypt.genSalt(10);
 
@@ -26,7 +26,7 @@ router.post("/signup", async (req, res) => {
 
         res.redirect("/login");                                                              // redirect to login
     } catch(error) {
-        res.redirect("404")                                                                 // redirect to 404 Page if there is an error
+        res.send({ message: "Internal Server Error", err: err });                            // redirect to 404 Page if there is an error
     }
 });
 
@@ -53,7 +53,7 @@ router.post("/login", async (req, res) => {
         }
 
         req.session.currentUser = {                                                         // if login info match, create session for authentication
-            username: foundUser.usernman,
+            username: foundUser.username,
             id: foundUser._id,
         }
 
