@@ -91,4 +91,14 @@ router.put("/:id", function (req, res) {
     }
   });
 
+  // delete
+router.delete("/:id", function (req, res) {
+    try {
+        db.Post.findByIdAndDelete(req.params.id);
+        res.redirect("/");
+    } catch (error) {
+        res.send({ message: "Internal server error" });
+    }
+  });
+
 module.exports = router;
