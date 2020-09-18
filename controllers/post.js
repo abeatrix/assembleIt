@@ -71,7 +71,7 @@ router.get("/:id/edit", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const foundPost = await db.Post.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.redirect(`/${foundPost._id}`);
+    res.redirect(`/posts/${foundPost._id}`);
   } catch (error) {
     res.send({ message: "Internal server error" });
   }

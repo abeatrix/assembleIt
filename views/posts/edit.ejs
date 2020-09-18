@@ -8,7 +8,7 @@
   <body>
     <main>
       <h2>Edit <%= post.title %></h2>
-      <form action="/<%= post._id %>?_method=PUT" method="POST">
+      <form action="/posts/<%= post._id %>?_method=PUT" method="POST">
         <p>
           <textarea type="text" name="body" placeholder="Body">
             <%= post.body %></textarea>
