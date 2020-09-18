@@ -61,7 +61,7 @@ router.get("/:id/edit", async (req, res) => {
   try {
     const foundPost = await db.Post.findById(req.params.id);
     const context = { post: foundPost };
-    res.render("posts/edit", context);
+    res.render("posts/edit.ejs", context);
   } catch (error) {
     res.send({ message: "Internal server error" });
   }

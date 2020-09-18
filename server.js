@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 4000;
+const PORT = 3000;
 const path = require('path');
 const controllers = require('./controllers');
 const methodOverride = require('method-override');
@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 app.set('view engine', 'ejs');
 
 // view routes
-app.use("/posts", controllers.post);
+app.use("/", controllers.post);
 
 
 
