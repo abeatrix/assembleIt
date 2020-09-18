@@ -45,7 +45,7 @@ router.get("/newPost", (req, res) => {
     }
   });
 
-  // show
+// show
 router.get("/:id", function (req, res) {
     try {
         const foundPost = db.Post.findById(req.params.id);
@@ -63,6 +63,29 @@ router.get("/:id/edit", function (req, res) {
         const foundPost = db.Post.findById(req.params.id);
         const context = {post: foundPost};
         res.render("posts/edit", context);
+    } catch (error) {
+        res.send({ message: "Internal server error" });
+    }
+  });
+
+// update
+router.put("/:id", function (req, res) {
+    db.Article.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true },
+      function (err, updatedArticle) {
+        if (err) {
+          console.log(err);
+          return res.send(err);
+        }
+        res.redirect(`/articles/${updatedArticle._id}`);
+      }
+    );
+
+    try {
+        const foundPost = db.Post.findByIdAndUpdate(req.params.id, req.body, {new:true});
+        res.redirect(`/${foundPost._id}`);
     } catch (error) {
         res.send({ message: "Internal server error" });
     }
