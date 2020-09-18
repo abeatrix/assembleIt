@@ -18,11 +18,48 @@ router.get("/", async (req, res) => {
     }
 });
 
+
+
 // NEW VIEW
 router.get("/new", (req, res) => {
     res.render("user/new")
 })
 
+
+
 // CREATE
+router.post("/", (req, res) => {
+
+    db.User.create(req.body, function (err, createdUser) {
+        if(err){
+            console.log(err);
+            return res.send(err);
+        }
+        res.redirect("/auth/login")
+    })
+})
+
+
+
+// SHOW
+
+
+
+
+// EDIT
+
+
+
+
+// UPDATE
+
+
+
+
+// DELETE
+
+
+
+
 
 module.exports = router;
