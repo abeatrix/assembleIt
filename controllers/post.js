@@ -57,4 +57,15 @@ router.get("/:id", function (req, res) {
     }
   });
 
+// edit form
+router.get("/:id/edit", function (req, res) {
+    try {
+        const foundPost = db.Post.findById(req.params.id);
+        const context = {post: foundPost};
+        res.render("posts/edit", context);
+    } catch (error) {
+        res.send({ message: "Internal server error" });
+    }
+  });
+
 module.exports = router;
