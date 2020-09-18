@@ -83,8 +83,21 @@ router.put("/:id", (req, res) => {
 
 
 // DELETE
-
-
+router.delete("/:id", (req, res) => {
+    db.User.findByIdAndDelete(req.params.id, (err, deletedUser) => {
+        if(err){
+            console.log(err);
+            return res.send(err);
+        }
+        db.Post.remove({user: deletedUser._id}, (err, removedPosts) => {
+            if(err){
+                console.log(err);
+                return res.send(err);
+            }
+            res.redirect("/")
+        });
+    });
+});
 
 
 
