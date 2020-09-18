@@ -17,9 +17,13 @@
   },
   "homepage": "https://github.com/abeatrix/assembleIt#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^3.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "method-override": "^3.0.0",
+    "moment": "^2.28.0",
     "mongoose": "^5.10.5"
   }
 }
