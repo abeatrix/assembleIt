@@ -1,0 +1,39 @@
+body {
+    background-color: whitesmoke;
+}
+
+.posts, .submitPost {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    background-color: white;
+}
+
+ul {
+    list-style-type: none;
+}
+
+article {
+    margin-top: 20px;
+}
+
+.posts {
+    margin: 10px auto;
+}
+
+.submitPost {
+    margin: 10px auto;
+}
+
+form {
+    display: inline;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
