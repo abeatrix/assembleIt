@@ -56,7 +56,16 @@ router.get("/:id", (req, res) => {
 
 
 // EDIT
-
+router.get(":/id/edit", (req, res) => {
+    db.User.findById(req.params.id, (err, foundUser) => {
+        if(err){
+            console.log(err);
+            return res.send(err);
+        }
+        const context = { user: foundUser };
+        res.render("user/edit", context)
+    })
+})
 
 
 
