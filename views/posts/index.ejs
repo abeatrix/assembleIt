@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head.ejs', {title: "ALL POSTS"}) %>
-<body>
+    <%- include('../partials/head.ejs', {title: "LOGIN"}) %>
+  <body>
+    <main>
+      <ul>
+        <% posts.forEach(post => { %>
+        <li>
+          <a href="/posts/<%= post._id %>"> <%= post.title %> </a>
+        </li>
+        <% }) %>
+      </ul>
 
-
-</body>
+      <% if(posts.length === 0) { %>
+      <p>There are no posts available yet.</p>
+      <% } %>
+    </main>
+  </body>
 </html>

@@ -11,9 +11,7 @@ const controllers = require("./controllers");
 
 /* INSTANCED MODULES */
 const app = express();
-
-/* CONFIGURATION */
-const PORT = 4000;
+const PORT = 3000;
 
 app.set("view engine", "ejs")
 
@@ -43,16 +41,27 @@ const authRequired = (req, res, next) => {
 
 
 /* ROUTES */
-// VIEW ROUTES
-app.get("/", (req, res) => {
-    res.render("index", { user: req.session.currentUser });
-});
 
 // AUTH ROUTES
-app.use("/", controllers.auth);
+// app.use("/", controllers.auth);
+
+// VIEW ROUTES
+app.get("/", async (req, res) => {
+    try {
+        const foundPosts = await db.Post.find({});
+        const context = {
+          posts: foundPosts
+        };
+        res.render("posts/index.ejs", context);
+      } catch (error) {
+        res.send({ message: "Internal server error" });
+      }
+});
+
+
 
 // USER ROUTES
-app.use("/users", controllers.user);
+// app.use("/users", controllers.user);
 
 
 // POSTS ROUTES
@@ -60,7 +69,7 @@ app.use("/posts", controllers.post);
 
 
 //COMMENTS ROUTES
-app.use("/comments", controllers.comment);
+// app.use("/comments", controllers.comment);
 
 
 // SERVER LISTENER
