@@ -43,7 +43,7 @@ const authRequired = (req, res, next) => {
 /* ROUTES */
 
 // AUTH ROUTES
-// app.use("/", controllers.auth);
+app.use("/", controllers.auth);
 
 // VIEW ROUTES
 app.get("/", async (req, res) => {
@@ -61,7 +61,7 @@ app.get("/", async (req, res) => {
 
 
 // USER ROUTES
-// app.use("/users", controllers.user);
+app.use("/users", controllers.user);
 
 
 // POSTS ROUTES
