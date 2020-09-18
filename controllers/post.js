@@ -3,21 +3,29 @@ const router = express.Router();
 
 const db = require("../models");
 
-// base route r/
+// base route /
 
 // index route
-router.get("/", function (req, res) {
-    db.Article.find({}, function (error, foundArticles) {
-      if (error) return res.send(error);
-  
-      const context = {
-        articles: foundArticles,
-      };
-  
-      res.render("article/index", context);
-    });
+router.get("/", (req, res) => {
+    try {
+        const foundPosts = db.Post.find({});
+        const context = {
+            posts: foundPosts
+        };
+
+        res.render("/", context);
+    } catch (error) {
+        res.send(error);
+    }
   });
 
-
+// new route
+router.get("/newPost", (req, res) => {
+    try {
+        res.render("/newPost");
+    } catch (error) {
+        res.send(error);
+    }
+  });
 
 module.exports = router;
