@@ -7,7 +7,7 @@ const db = require("../models");
 // INDEX VIEW
 router.get("/", async (req, res) => {
     try {
-        const foundUsers = await db.Author.find({});
+        const foundUsers = await db.User.find({});
         const context = {
             users: foundUsers,
         }
@@ -56,7 +56,7 @@ router.get("/:id", (req, res) => {
 
 
 // EDIT
-router.get(":/id/edit", (req, res) => {
+router.get("/:id/edit", (req, res) => {
     db.User.findById(req.params.id, (err, foundUser) => {
         if(err){
             console.log(err);
