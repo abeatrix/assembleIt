@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema(
     votes: { type: Number, default: 0 },
     subreddit: { type: String },
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    comments: { type: mongoose.Schema.Types.ObjectId, ref: "Comment" }
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }]
   },
   {
     timestamps: true,

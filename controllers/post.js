@@ -31,13 +31,35 @@ router.get("/newPost", (req, res) => {
 });
 
 // new comment route
-router.get("/:id/newComment", (req, res) => {
+router.get("/:id/newComment", async (req, res) => {
   try {
+    const postID = await db.Post.findById(req.params.id);
     const context = {
       user: req.session.currentUser,
+      post: postID
   }
     res.render("comments/new.ejs", context);
   } catch (error) {
+    res.send({ message: "Internal server error" });
+  }
+});
+
+// Create comment route
+router.post("/comments", async (req, res) => {
+  try {
+    const createdComment = await db.Comment.create(req.body);
+    const foundUser = await db.User.findById(req.body.user);
+    const foundPost = await db.Post.findById(req.body.post);
+
+    foundUser.comments.push(createdComment);
+    await foundUser.save();
+
+    foundPost.comments.push(createdComment);
+    await foundPost.save();
+
+    res.redirect(`/posts/${foundPost._id}`);
+  } catch (error) {
+    console.log(error);
     res.send({ message: "Internal server error" });
   }
 });
