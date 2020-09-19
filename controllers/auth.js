@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 /* BASE PATH */
 // REGISTER FORM
 router.get("/signup", (req, res) => {
-    res.render("auth/signup");
+    res.render("auth/signup", {user: req.session.currentUser});
 });
 
 
@@ -33,7 +33,7 @@ router.post("/signup", async (req, res) => {
 
 // LOGIN FORM
 router.get("/login", (req, res) => {
-    res.render("auth/login");
+    res.render("auth/login", {user: req.session.currentUser});
 });
 
 
@@ -67,7 +67,7 @@ router.post("/login", async (req, res) => {
 // LOGOUT / DELETE SESSION
 router.delete("/logout", async (req, res) => {
     await req.session.destroy();
-    res.direct("/");                                                                        // redirect to home after logged-out
+    res.redirect("/");                                                                  // redirect to home after logged-out
 })
 
 

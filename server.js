@@ -18,7 +18,6 @@ app.set("view engine", "ejs")
 // MIDDLEWARE
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
-
 app.use(methodOverride("_method"));
 app.use(session({
     resave: false,
@@ -32,6 +31,8 @@ app.use(session({
     }
 }))
 
+app.locals.moment = require('moment');
+
 const authRequired = (req, res, next) => {
     if(!req.session.currentUser){
         return res.redirect("/login");
@@ -42,26 +43,26 @@ const authRequired = (req, res, next) => {
 
 /* ROUTES */
 
-// AUTH ROUTES
-// app.use("/", controllers.auth);
-
 // VIEW ROUTES
 app.get("/", async (req, res) => {
     try {
         const foundPosts = await db.Post.find({});
         const context = {
-          posts: foundPosts
+            posts: foundPosts,
+            user: req.session.currentUser,
         };
         res.render("posts/index.ejs", context);
-      } catch (error) {
+    } catch (error) {
         res.send({ message: "Internal server error" });
-      }
+    }
 });
 
+// AUTH ROUTES
+app.use("/", controllers.auth);
 
 
 // USER ROUTES
-// app.use("/users", controllers.user);
+app.use("/users", controllers.user);
 
 
 // POSTS ROUTES

@@ -1,0 +1,75 @@
+* {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+.posts, .submitPost {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    background-color: white;
+}
+
+footer {
+	background-color: #e3f2fd;
+    position: fixed;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+
+ul {
+    list-style-type: none;
+}
+
+.posts {
+    margin: 10px auto;
+}
+
+.submitPost {
+    margin: 10px auto;
+}
+
+form {
+    display: inline;
+}
+
+/* HOME PAGE */
+.submitbtn {
+    text-align: right;
+}
+
+.post-container{
+	display: flex;
+    margin-top: 20px;
+    max-height: 40px;
+}
+
+.posts-Vote {
+    flex: 1.5;
+    margin: auto;
+    text-align: left;
+}
+.posts-Title {
+    flex: 6.5;
+}
+
+.posts-Comment {
+    flex: 2;
+    text-align: right;
+    margin: auto 20px;
+}
+
+.fas {
+    color: #007CFF;
+}
+
+.vote-icon {
+    font-size: 20px;
+}
