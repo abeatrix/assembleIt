@@ -1,0 +1,27 @@
+/* PROFILE */
+.profile-container{
+	display: flex;
+}
+.profile-posts{
+	background-color: whitesmoke;
+	flex: 7;
+	min-height: 750px;
+	margin: 10px;
+	padding: 20px;
+	border-radius: 15px;
+}
+.profile-user{
+	background-color: #e3f2fd;
+	flex: 3;
+	max-height: 300px;
+	margin: 10px;
+	padding: 20px;
+	border-radius: 10px;
+}
+form, #profile-btn{
+    display: inline;
+}
+.profile-form {
+	border: none;
+	display: flex;
+}

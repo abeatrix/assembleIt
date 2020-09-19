@@ -1,6 +1,6 @@
 
 <nav class="navbar sticky-top navbar-expand-lg " style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="/posts">
+    <a class="navbar-brand" href="/">
         <img src="https://i.ibb.co/RCV0S6R/shark.gif" width="30" height="30" class="d-inline-block align-top" alt="">
         Sharkburg
       </a>
@@ -24,7 +24,14 @@
         </form>
 
         <span class="navbar-text">
-            <a href="/auth/login">Log In</a> | <a href="/auth/signup">Sign Up</a>
+            <% if(user) { %>
+                <a href="/users/<%=user._id%>"><i class="fas fa-user"></i> <%=user.username%></a>
+                <form action='/logout?_method=DELETE' method='POST'>
+                    <button class="btn btn-link btn-sm" type='submit'>Logout</button>
+                </form>
+            <% } else { %>
+                <a href="/auth/login">Log In</a> | <a href="/auth/signup">Sign Up</a>
+            <% } %>
         </span>
     </div>
 </nav>

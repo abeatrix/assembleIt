@@ -43,23 +43,22 @@ const authRequired = (req, res, next) => {
 
 /* ROUTES */
 
-// AUTH ROUTES
-app.use("/", controllers.auth);
-
 // VIEW ROUTES
 app.get("/", async (req, res) => {
     try {
         const foundPosts = await db.Post.find({});
         const context = {
             posts: foundPosts,
-            user: req.session.currentUser
+            user: req.session.currentUser,
         };
         res.render("posts/index.ejs", context);
-      } catch (error) {
+    } catch (error) {
         res.send({ message: "Internal server error" });
-      }
+    }
 });
 
+// AUTH ROUTES
+app.use("/", controllers.auth);
 
 
 // USER ROUTES

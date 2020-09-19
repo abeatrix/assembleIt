@@ -10,6 +10,7 @@ router.get("/", async (req, res) => {
         const foundUsers = await db.User.find({});
         const context = {
             users: foundUsers,
+            user: req.session.currentUser,
         }
         res.render("users/index", context);
     } catch (err){
