@@ -51,7 +51,8 @@ app.get("/", async (req, res) => {
     try {
         const foundPosts = await db.Post.find({});
         const context = {
-          posts: foundPosts
+            posts: foundPosts,
+            user: req.session.currentUser
         };
         res.render("posts/index.ejs", context);
       } catch (error) {
