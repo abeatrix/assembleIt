@@ -70,7 +70,7 @@ app.use("/posts", controllers.post);
 
 
 //COMMENTS ROUTES
-// app.use("/comments", controllers.comment);
+app.use("/comments", controllers.comment);
 
 
 // SERVER LISTENER

@@ -13,6 +13,6 @@ const commentSchema = new mongoose.Schema(
   } // going to add createdAt, updatedAt
 );
 
-const Comment = mongoose.model("Post", commentSchema);
+const Comment = mongoose.model("Comment", commentSchema);
 
 module.exports = Comment;

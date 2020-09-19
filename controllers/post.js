@@ -30,6 +30,18 @@ router.get("/newPost", (req, res) => {
   }
 });
 
+// new comment route
+router.get("/:id/newComment", (req, res) => {
+  try {
+    const context = {
+      user: req.session.currentUser,
+  }
+    res.render("comments/new.ejs", context);
+  } catch (error) {
+    res.send({ message: "Internal server error" });
+  }
+});
+
 // create route
 router.post("/", async (req, res) => {
   try {
