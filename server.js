@@ -18,7 +18,6 @@ app.set("view engine", "ejs")
 // MIDDLEWARE
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
-
 app.use(methodOverride("_method"));
 app.use(session({
     resave: false,
@@ -31,6 +30,8 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 60 * 24 * 7 * 2
     }
 }))
+
+app.locals.moment = require('moment');
 
 const authRequired = (req, res, next) => {
     if(!req.session.currentUser){
