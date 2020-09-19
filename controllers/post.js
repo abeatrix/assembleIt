@@ -21,7 +21,10 @@ router.get("/", async (req, res) => {
 // new route
 router.get("/newPost", (req, res) => {
   try {
-    res.render("posts/new.ejs");
+    const context = {
+      user: req.session.currentUser,
+  }
+    res.render("posts/new.ejs", context);
   } catch (error) {
     res.send({ message: "Internal server error" });
   }
@@ -30,12 +33,11 @@ router.get("/newPost", (req, res) => {
 // create route
 router.post("/", async (req, res) => {
   try {
-    await db.Post.create(req.body);
-    //   TODO user created posts
-    //   const user = await db.User.findById(req.body.author);
+    const createdPost = await db.Post.create(req.body);
+    const foundUser = await db.User.findById(req.body.user);
 
-    /* foundAuthor.articles.push(createdArticle);
-    await foundAuthor.save(); */
+    foundUser.posts.push(createdPost);
+    await foundUser.save();
 
     res.redirect("/");
   } catch (error) {
@@ -48,8 +50,9 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const foundPost = await db.Post.findById(req.params.id);
-    const context = { post: foundPost };
-
+    const context = { post: foundPost,
+      user: req.session.currentUser,
+     };
     res.render("posts/show", context);
   } catch (error) {
     res.send({ message: "Internal server error" });
@@ -60,7 +63,9 @@ router.get("/:id", async (req, res) => {
 router.get("/:id/edit", async (req, res) => {
   try {
     const foundPost = await db.Post.findById(req.params.id);
-    const context = { post: foundPost };
+    const context = { post: foundPost,
+      user: req.session.currentUser,
+     };
     res.render("posts/edit.ejs", context);
   } catch (error) {
     res.send({ message: "Internal server error" });

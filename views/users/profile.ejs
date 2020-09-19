@@ -13,30 +13,29 @@
                 <div>
                     <h4>YOUR POSTS</h4>
 
-                    <div class='posts'>
+                    <div class='profile-posts-list'>
 
                         <!-- If there is no post -->
                         <% if(user.posts.length === 0) { %>
-                            <p> <%= user.username %> hasn't posted anything yet :(</p>
+                            <div class="profile-nopost">You don't have any post yet <i class="far fa-frown"></i></div>
                         <% } %>
 
                         <!-- show newest post first -->
                         <ul>
                             <% for(let i = user.posts.length-1; i >= 0; i--){ %>
                                 <li>
-                                    <article>
-                                        <a href="/posts/<%= user.posts[i]._id %>"> <b><%= user.posts.title %></b> </a>
-                                        <br><small>Submitted on: <%= moment(user.posts[i].createdAt).startOf('hour').fromNow(); %></small>
+                                    <article class="articlePost">
+                                        <a href="/posts/<%= user.posts[i]._id %>"> <%= user.posts[i].title %> </a>
+                                        <div class="submitbtn">
+                                            <small>Submitted on: <%= moment(user.posts[i].createdAt).startOf('hour').fromNow(); %></small>
+                                            <form action="/posts/<%= user.posts[i]._id %>/edit">
+                                                <button type="submit" class="btn btn-link btn-sm pull-left"><small>EDIT</small></button>
+                                            </form>
+                                            <form action="/posts/<%= user.posts[i]._id %>?_method=DELETE" method="POST">
+                                                <button type="submit" class="btn btn-link btn-sm pull-left"><small>DELETE</small></button>
+                                            </form>
+                                        </div>
                                     </article>
-                                    <form action="/posts/<%= user.posts[i]._id%>/edit">
-                                        <button type="submit" class="btn btn-link btn-sm pull-left">COMMENTS</button>
-                                    </form>
-                                    <form action="/posts/<%= user.posts[i]._id %>/edit">
-                                        <button type="submit" class="btn btn-link btn-sm pull-left">EDIT</button>
-                                    </form>
-                                    <form action="/posts/<%= user.posts[i]._id %>?_method=DELETE" method="POST">
-                                        <button type="submit" class="btn btn-link btn-sm pull-left">DELETE</button>
-                                    </form>
                                 </li>
                             <% } %>
                         </ul>
@@ -44,18 +43,18 @@
                 </div>
             </div>
             <!-- RIGHT SIDE OF THE PROFILE - SHOW USER INFO -->
-            <div class="profile-user">
-                <div>
+            <div class="profile-left">
+                <div class="profile-user">
                     <h4>PROFILE</h4>
                     <p><b>username:</b> <%= user.username %></p>
                     <p><b>karma:</b> <%= user.karma %></p>
                     <p><b>cakeday:</b> <%= moment(user.createdAt).format("MMM Do YY"); %></p>
-                    <div class="profile-form">
+                    <div class="profile-form-btn">
                         <form action="/users/<%= user._id %>/edit">
-                            <button type="submit" class="btn btn-link btn-sm">EDIT INFO</button>
+                            <button type="submit" class="btn btn-link btn-sm"><small>EDIT INFO</small></button>
                         </form>
                         <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
-                            <button type="submit" class="btn btn-link btn-sm">DELETE ACCOUNT</button>
+                            <button type="submit" class="btn btn-link btn-sm"><small>DELETE ACCOUNT</small></button>
                         </form>
                     </div>
                 </div>

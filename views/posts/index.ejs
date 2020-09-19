@@ -20,7 +20,7 @@
           <div class="form-group">
               <textarea class="form-control" name="body" id="exampleFormControlTextarea1" rows="3" placeholder="Context"></textarea>
           </div>
-          <input type="text" name="user" class="form-control" value="<%=user.id%>" />
+          <input type="text" name="user" class="form-control" value="<%=user.id%>" hidden>
           <div class="submitbtn"> <button type="submit" class="btn btn-primary btn-sm">SUBMIT</button> </div>
       </form>
     <% } %>
@@ -32,17 +32,17 @@
                   <div class="post-container">
                     <div class="posts-Vote">
                       <span>
-                        <i class="fas fa-caret-up vote-icon"></i>
+                        <i class="fas fa-caret-left vote-icon"></i>
                         <%= posts[i].votes %>
-                        <i class="fas fa-caret-down vote-icon"></i>
+                        <i class="fas fa-caret-right vote-icon"></i>
                       </span>
                     </div>
                     <div class="posts-Title">
-                      <a href="/posts/<%= posts[i].id %>"> <b><%= posts[i].title %></b> </a>
+                      <a href="/posts/<%= posts[i].id %>"> <%= posts[i].title %></a>
                       <br><small>Submitted <%= moment(posts[i].createdAt).startOf('hour').fromNow(); %></small>
                     </div>
                     <div class="posts-Comment">
-                      <a href="/posts/<%= posts[i].id%>/comments"><span><i class="fas fa-comment-dots"></i> COMMENTS</span></a>
+                      <a href="/posts/<%= posts[i].id%>/comments"><span><i class="fas fa-comment-dots"></i> comments</span></a>
                     </div>
                   </div>
               </li>

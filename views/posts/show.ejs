@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= post.title %></title>
-  </head>
-  <body>
-    <main>
-      <section>
-        <a href="<%= post._id %>/edit">Edit</a>
-        <ul>
-          <li><%= post.title %></li>
-          <li><%= post.body %></li>
-        </ul>
-      </section>
-      <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-        <input type="submit" value="Delete" />
-      </form>
-    </main>
-  </body>
+    <%- include('../partials/head.ejs', {title: "Edit Post"}) %>
+<body>
+    <!-- navbar -->
+    <%- include('../partials/nav.ejs') %>
+
+    <div class="submitPost post-show-container">
+      <!-- LEFT = VOTES BAR -->
+      <div class="post-show-left">
+        <div class="post-show-votes">
+          <p><i class="fas fa-caret-up vote-icon"></i></p>
+          <p><%= post.votes %></p>
+          <p><i class="fas fa-caret-down vote-icon"></i></p>
+        </div>
+      </div>
+
+      <!-- RIGHT = TITLE + BODY -->
+      <div class="post-show-right">
+        <h4 class="post-show-title"><%= post.title %></h4>
+        <div class="post-show-body"><pv><%=post.body%></pv></div>
+
+        <div class="post-show-edit">
+          <br><small>Submitted on <%= moment(post.createdAt).format('llll'); %></small>
+          <form action="/posts/<%= post._id %>/edit">
+            <button type="submit" class="btn btn-link btn-sm">UPDATE</button>
+          </form> |
+          <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-link btn-sm">DELETE</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- footer -->
+    <%- include('../partials/footer') %>
+
+</body>
 </html>

@@ -1,0 +1,60 @@
+
+/* POST - SHOW */
+.post-show-container{
+	display: flex;
+}
+
+
+.post-show-left{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.post-show-votes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-show-right{
+    flex: 9;
+}
+
+.post-show-right h4{
+    margin-top: 50px;
+}
+
+.post-show-title {
+    margin: 30px auto;
+    color: #007CFF;
+}
+
+.post-show-body{
+    color: #989898;
+    font-weight: light;
+    margin-bottom: 50px;
+}
+
+.post-show-edit{
+    text-align: right;
+    margin-right: 5%;
+}
+
+.post-show-edit small{
+    float: left;
+}
+
+/* EDIT POST */
+.post-edit{
+
+    align-items: center;
+    justify-content: center;
+}
+.post-edit h4{
+    margin: 50px auto 30px;
+    color: #007CFF;
+}
