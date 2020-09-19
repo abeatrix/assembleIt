@@ -35,6 +35,16 @@
 
     </div>
 
+    <div class='comments'>
+      <ul>
+          <% for(let i=0; i < comments.length; i++){ %>
+              <li>
+                <%= comments[i].body %>
+              </li>
+          <% } %>
+      </ul>
+  </div>
+
 
     <!-- footer -->
     <%- include('../partials/footer') %>

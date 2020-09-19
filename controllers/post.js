@@ -84,8 +84,14 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const foundPost = await db.Post.findById(req.params.id);
+    const foundComments = [];
+    for(let i = 0; i < foundPost.comments.length; i++){
+      foundComments.push(await db.Comment.findById(foundPost.comments[i]));
+    }
+
     const context = { post: foundPost,
       user: req.session.currentUser,
+      comments: foundComments
      };
     res.render("posts/show", context);
   } catch (error) {
