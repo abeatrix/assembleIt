@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/posts">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/posts/newPost">Submit Post</a>
@@ -25,12 +25,12 @@
 
         <span class="navbar-text">
             <% if(user) { %>
-                <a href="/users/<%=user._id%>"><i class="fas fa-user"></i> <%=user.username%></a>
+                <a href="/users/<%=user.id%>"><i class="fas fa-user"></i> <%=user.username%></a>
                 <form action='/logout?_method=DELETE' method='POST'>
                     <button class="btn btn-link btn-sm" type='submit'>Logout</button>
                 </form>
             <% } else { %>
-                <a href="/auth/login">Log In</a> | <a href="/auth/signup">Sign Up</a>
+                <a href="/login">Log In</a> | <a href="/signup">Sign Up</a>
             <% } %>
         </span>
     </div>

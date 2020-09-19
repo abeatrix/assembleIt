@@ -25,3 +25,7 @@ form, #profile-btn{
 	border: none;
 	display: flex;
 }
+
+.user-edit-form{
+	margin-top: 10%;
+}
