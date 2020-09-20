@@ -1,5 +1,11 @@
 
 /* POST - SHOW */
+
+small{
+    color: black;
+}
+
+
 .post-show-container{
 	display: flex;
 }
@@ -56,5 +62,13 @@
 }
 .post-edit h4{
     margin: 50px auto 30px;
+    color: #007CFF;
+}
+
+.submitComment {
+    padding: 0 10%;
+}
+.comments{
+    padding: 20px 8%;
     color: #007CFF;
 }

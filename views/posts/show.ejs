@@ -31,20 +31,35 @@
         </div>
       </div>
 
-      <a href="/posts/<%= post.id %>/newComment">Comment</a>
-
     </div>
 
-    <div class='comments'>
-      <ul>
-          <% for(let i=0; i < comments.length; i++){ %>
-              <li>
-                <%= comments[i].body %>
-              </li>
-          <% } %>
-      </ul>
-  </div>
+    <!-- COMMENT SESSION -->
+    <div class="submitPost">
+      <% if (user) { %>
+      <div class="submitComment">
+        <form action="/posts/comments" method="POST">
+            <div class="form-group user-edit-form">
+                <label>Make a Comment</label>
+                <input type="text" name="body" class="form-control" placeholder="Comment">
+            </div>
+            <input type="text" name="user" class="form-control" value="<%=user.id%>" hidden>
+            <input type="text" name="post" class="form-control" value="<%=post.id%>" hidden>
+            <div class="submitbtn"> <input type="submit" class="btn btn-primary btn-sm" value="SUBMIT COMMENT"> </div>
+          </form>
+      </div>
+      <% } %>
+      <div class='comments'>
+        <ul>
+            <% for(let i=0; i < comments.length; i++){ %>
+                <li>
+                  <%= comments[i].body %>
+                  <br><small>Submitted on <%= moment(post.createdAt).format('llll'); %></small>
+                </li>
+            <% } %>
+        </ul>
+      </div>
 
+    </div>
 
     <!-- footer -->
     <%- include('../partials/footer') %>
