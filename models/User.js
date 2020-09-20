@@ -13,6 +13,13 @@ const userSchema = new mongoose.Schema(
               ref: "Post",
             },
           ],
+          comments: [
+            // reference
+            {
+              type: mongoose.Schema.Types.ObjectId,
+              ref: "Comment",
+            },
+          ],
     },
     {
         timestamps: true,

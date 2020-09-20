@@ -69,10 +69,6 @@ app.use("/users", controllers.user);
 app.use("/posts", controllers.post);
 
 
-//COMMENTS ROUTES
-// app.use("/comments", controllers.comment);
-
-
 // SERVER LISTENER
 app.listen(PORT, function () {
     console.log(`server up and running on PORT ${PORT}`)
