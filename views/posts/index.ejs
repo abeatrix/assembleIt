@@ -5,7 +5,7 @@
 <body>
     <!-- navbar -->
     <%- include('../partials/nav.ejs') %>
-
+    <a id="top"></a>
 
     <div class='submitPost'>
       <% if(posts.length === 0) { %>
@@ -42,11 +42,12 @@
                       <br><small>Submitted <%= moment(posts[i].createdAt).startOf('hour').fromNow(); %></small>
                     </div>
                     <div class="posts-Comment">
-                      <a href="/posts/<%= posts[i].id%>/comments"><span><i class="fas fa-comment-dots"></i> comments</span></a>
+                      <a href="/posts/<%= posts[i].id%>#comments"><span><i class="fas fa-comment-dots"></i> comments</span></a>
                     </div>
                   </div>
               </li>
           <% } %>
+          <li id="backtotop"><a href="#top"><i class="fas fa-arrow-up"></i> back to top</a></li>
       </ul>
   </div>
 

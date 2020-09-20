@@ -5,12 +5,15 @@ small{
     color: black;
 }
 
-
+#backtotop {
+    margin: 30px auto;
+    text-align: center;
+}
 .post-show-container{
 	display: flex;
 }
 
-
+/* VOST OTES */
 .post-show-left{
     flex: 1;
     display: flex;
@@ -26,6 +29,7 @@ small{
     justify-content: center;
 }
 
+/* POST BODY */
 .post-show-right{
     flex: 9;
 }
@@ -68,7 +72,13 @@ small{
 .submitComment {
     padding: 0 10%;
 }
+
 .comments{
-    padding: 20px 8%;
-    color: #007CFF;
+    margin: 15px auto 100px auto;
+}
+
+
+.comments li{
+    padding: 15px 8%;
+    color: #989898;
 }
