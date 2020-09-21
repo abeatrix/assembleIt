@@ -5,12 +5,13 @@ const db = require("../models");
 
 // base route /
 
-// index route
-router.get("/", async (req, res) => {
+// subreddit index route
+router.get("/r/:subreddit", async (req, res) => {
   try {
-    const foundPosts = await db.Post.find({});
+    const foundPosts = await db.Post.find({subreddit: req.params.subreddit});
     const context = {
-      posts: foundPosts
+      posts: foundPosts,
+      user: req.session.currentUser
     };
     res.render("posts/index.ejs", context);
   } catch (error) {
@@ -75,7 +76,7 @@ router.post("/", async (req, res) => {
     foundUser.posts.push(createdPost);
     await foundUser.save();
 
-    res.redirect("/");
+    res.redirect(`/posts/r/${req.body.subreddit}`);
   } catch (error) {
     console.log(error);
     res.send({ message: "Internal server error" });

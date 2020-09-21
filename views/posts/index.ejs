@@ -19,7 +19,8 @@
       <% if (user) { %>
         <form action="/posts" method="POST" class="form-group">
           <div class="form-group">
-              <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Title">
+            <input type="text" name="subreddit" class="form-control" placeholder="Subreddit">
+            <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Title">
           </div>
           <div class="form-group">
               <textarea class="form-control" name="body" id="exampleFormControlTextarea1" rows="3" placeholder="Context"></textarea>
@@ -45,6 +46,7 @@
                       <a href="/posts/<%= posts[i].id %>"> <%= posts[i].title %></a>
                       <br><small>Submitted <%= moment(posts[i].createdAt).startOf('hour').fromNow(); %> by <%= posts[i].username %> </small>
                     </div>
+                    <div class="post-subreddit"><a href="/posts/<%= posts[i].subreddit%>"></a></div>
                     <div class="posts-Comment">
                       <a href="/posts/<%= posts[i].id%>#comments"><span><i class="fas fa-comment-dots"></i> comments</span></a>
                     </div>
