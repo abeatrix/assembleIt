@@ -53,10 +53,10 @@
             <% } %>
             <div class='comments'>
               <ul>
-                  <% for(let i=0; i < comments.length; i++){ %>
+                  <% for(let i=comments.length-1; i >= 0; i--){ %>
                       <li>
                         <%= comments[i].body %>
-                        <br><small>Submitted on <%= moment(post.createdAt).format('llll'); %></small>
+                        <br><small>Submitted on <%= moment(comments[i].createdAt).format('llll'); %> by <%=comments[i].user%> </small>
                       </li>
                   <% } %>
                   <li><a href="#top"><i class="fas fa-arrow-up"></i> back to top</a></li>

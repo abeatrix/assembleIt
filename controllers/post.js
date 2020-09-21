@@ -92,7 +92,7 @@ router.get("/:id", async (req, res) => {
     const context = {
       post: foundPost,
       user: req.session.currentUser,
-      comments: foundComments
+      comments: foundComments,
     };
     res.render("posts/show", context);
   } catch (error) {

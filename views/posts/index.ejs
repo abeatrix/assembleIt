@@ -12,6 +12,10 @@
         <p>There are no posts available yet.</p>
       <% } %>
 
+      <% if (!user) { %>
+        <a href="/signup" class="signupFrontPage"><h2 class="signupFrontPage blinking">SING UP HERE</h2></a>
+      <% } %>
+
       <% if (user) { %>
         <form action="/posts" method="POST" class="form-group">
           <div class="form-group">
@@ -39,7 +43,7 @@
                     </div>
                     <div class="posts-Title">
                       <a href="/posts/<%= posts[i].id %>"> <%= posts[i].title %></a>
-                      <br><small>Submitted <%= moment(posts[i].createdAt).startOf('hour').fromNow(); %></small>
+                      <br><small>Submitted <%= moment(posts[i].createdAt).startOf('hour').fromNow(); %> by <%= posts[i].user %> </small>
                     </div>
                     <div class="posts-Comment">
                       <a href="/posts/<%= posts[i].id%>#comments"><span><i class="fas fa-comment-dots"></i> comments</span></a>
