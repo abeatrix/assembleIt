@@ -9,9 +9,9 @@
       <!-- LEFT = VOTES BAR -->
       <div class="post-show-left">
         <div class="post-show-votes">
-          <p><i class="fas fa-caret-up vote-icon"></i></p>
+          <p><a href="/posts/<%= post._id %>/up" class="btn btn-link btn-sm"><i class="fas fa-caret-up vote-icon"></i></a></p>
           <p><%= post.votes %></p>
-          <p><i class="fas fa-caret-down vote-icon"></i></p>
+          <p><a href="/posts/<%= post._id %>/down" class="btn btn-link btn-sm"><i class="fas fa-caret-down vote-icon"></i></a></p>
         </div>
       </div>
 
