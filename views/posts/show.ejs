@@ -22,12 +22,15 @@
 
         <div class="post-show-edit">
           <br><small>Submitted on <%= moment(post.createdAt).format('llll'); %></small>
+
+          <% if(user.id == post.user){ %>
           <form action="/posts/<%= post._id %>/edit">
             <button type="submit" class="btn btn-link btn-sm">UPDATE</button>
           </form> |
           <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
             <button type="submit" class="btn btn-link btn-sm">DELETE</button>
           </form>
+          <% } %>
         </div>
       </div>
 
