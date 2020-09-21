@@ -53,7 +53,7 @@
                         <form action="/users/<%= user._id %>/edit">
                             <button type="submit" class="btn btn-link btn-sm"><small>EDIT INFO</small></button>
                         </form>
-                        <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+                        <form action="/users/<%= user._id %>/deactivate">
                             <button type="submit" class="btn btn-link btn-sm"><small>DELETE ACCOUNT</small></button>
                         </form>
                     </div>

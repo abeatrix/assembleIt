@@ -81,7 +81,17 @@ router.put("/:id", (req, res) => {
     });
 });
 
-
+// USER DEACTIVATE VIEW
+router.get("/:id/deactivate", (req, res) => {
+    db.User.findById(req.params.id, (err, foundUser) => {
+        if(err){
+            console.log(err);
+            return res.send(err);
+        }
+        const context = { user: foundUser };
+        res.render("users/delete", context)
+    });
+})
 
 // DELETE
 router.delete("/:id", (req, res) => {
@@ -95,6 +105,7 @@ router.delete("/:id", (req, res) => {
                 console.log(err);
                 return res.send(err);
             }
+            req.session.destroy();
             res.redirect("/")
         });
     });
