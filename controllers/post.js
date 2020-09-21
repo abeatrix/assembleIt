@@ -5,12 +5,13 @@ const db = require("../models");
 
 // base route /
 
-// index route
-router.get("/", async (req, res) => {
+// subreddit index route
+router.get("/:subreddit", async (req, res) => {
   try {
-    const foundPosts = await db.Post.find({});
+    const foundPosts = await db.Post.find({subreddit: req.params.subreddit});
     const context = {
-      posts: foundPosts
+      posts: foundPosts,
+      user: req.session.currentUser
     };
     res.render("posts/index.ejs", context);
   } catch (error) {
