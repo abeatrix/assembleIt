@@ -86,7 +86,9 @@ router.get("/:id", async (req, res) => {
     const foundPost = await db.Post.findById(req.params.id);
     const foundComments = [];
     for (let i = 0; i < foundPost.comments.length; i++) {
-      foundComments.push(await db.Comment.findById(foundPost.comments[i]));
+      const comment = await db.Comment.findById(foundPost.comments[i]);
+      const user = await db.User.findById(comment.user);
+      foundComments.push([comment, user]);
     }
 
     const context = {
