@@ -1,10 +1,19 @@
 
 /* POST - SHOW */
+
+small{
+    color: black;
+}
+
+#backtotop {
+    margin: 30px auto;
+    text-align: center;
+}
 .post-show-container{
 	display: flex;
 }
 
-
+/* VOST OTES */
 .post-show-left{
     flex: 1;
     display: flex;
@@ -20,6 +29,7 @@
     justify-content: center;
 }
 
+/* POST BODY */
 .post-show-right{
     flex: 9;
 }
@@ -57,4 +67,18 @@
 .post-edit h4{
     margin: 50px auto 30px;
     color: #007CFF;
+}
+
+.submitComment {
+    padding: 0 10%;
+}
+
+.comments{
+    margin: 15px auto 100px auto;
+}
+
+
+.comments li{
+    padding: 15px 8%;
+    color: #989898;
 }

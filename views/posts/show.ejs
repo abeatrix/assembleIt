@@ -4,7 +4,7 @@
 <body>
     <!-- navbar -->
     <%- include('../partials/nav.ejs') %>
-
+    <a id="top"></a>
     <div class="submitPost post-show-container">
       <!-- LEFT = VOTES BAR -->
       <div class="post-show-left">
@@ -31,20 +31,39 @@
         </div>
       </div>
 
-      <a href="/posts/<%= post.id %>/newComment">Comment</a>
+      <a href="#comments">COMMENTS</a>
 
     </div>
 
-    <div class='comments'>
-      <ul>
-          <% for(let i=0; i < comments.length; i++){ %>
-              <li>
-                <%= comments[i].body %>
-              </li>
-          <% } %>
-      </ul>
-  </div>
-
+        <!-- COMMENT SESSION -->
+        <a id="comments">
+          <div class="submitPost">
+            <% if (user) { %>
+            <div class="submitComment">
+              <form action="/posts/comments" method="POST">
+                  <div class="form-group user-edit-form">
+                      <label>Make a comment</label>
+                      <input type="text" name="body" class="form-control" placeholder="Enter text here">
+                  </div>
+                  <input type="text" name="user" class="form-control" value="<%=user.id%>" hidden>
+                  <input type="text" name="post" class="form-control" value="<%=post.id%>" hidden>
+                  <div class="submitbtn"> <input type="submit" class="btn btn-primary btn-sm" value="COMMENT"> </div>
+                </form>
+            </div>
+            <% } %>
+            <div class='comments'>
+              <ul>
+                  <% for(let i=0; i < comments.length; i++){ %>
+                      <li>
+                        <%= comments[i].body %>
+                        <br><small>Submitted on <%= moment(post.createdAt).format('llll'); %></small>
+                      </li>
+                  <% } %>
+                  <li><a href="#top"><i class="fas fa-arrow-up"></i> back to top</a></li>
+              </ul>
+            </div>
+          </div>
+        </a>
 
     <!-- footer -->
     <%- include('../partials/footer') %>

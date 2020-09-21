@@ -6,6 +6,7 @@ body {
     background-color: whitesmoke;
 }
 
+/* STLYES FOR HOME PAGE */
 .posts, .submitPost {
     margin: auto;
     width: 60%;
@@ -30,6 +31,7 @@ ul {
 
 .posts {
     margin: 10px auto;
+    margin-bottom: 100px;
 }
 
 .submitPost {
