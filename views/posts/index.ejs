@@ -36,15 +36,11 @@
                   <div class="post-container">
                     <div class="posts-Vote">
                       <span>
-                        <button class="btn btn-link btn-sm" id="downvote_<%=posts[i]%>"><i class="fas fa-caret-left vote-icon"></i></button>
+                        <a href="/posts/<%= posts[i].id %>/down" class="btn btn-link btn-sm" id="downvote_<%=posts[i]%>"><i class="fas fa-caret-left vote-icon"></i></a>
 
                         <%= posts[i].votes %>
-                        <button class="btn btn-link btn-sm" id="upvote_<%=posts[i]%>"><i class="fas fa-caret-right vote-icon"></i></button>
-                        <% const upvoteicon = document.getElementById(`upvote_${posts[i]}`); %>
-                        <% upvoteicon.addEventListener("click", function(){ %>
-                          <% console.log(posts[i].votes); %>
-                          <% posts[i].votes += 1; %>
-                          <% }) %>
+                        <a href="/posts/<%= posts[i].id %>/up" class="btn btn-link btn-sm" id="upvote_<%=posts[i]%>"><i class="fas fa-caret-right vote-icon"></i></a>
+
                       </span>
                     </div>
                     <div class="posts-Title">
