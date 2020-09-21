@@ -23,7 +23,7 @@
             <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Title">
           </div>
           <div class="form-group">
-              <textarea class="form-control" name="body" id="exampleFormControlTextarea1" rows="3" placeholder="Context"></textarea>
+              <textarea class="form-control" name="body" rows="3" placeholder="Context"></textarea>
           </div>
           <input type="text" name="user" class="form-control" value="<%=user.id%>" hidden>
           <div class="submitbtn"> <button type="submit" class="btn btn-primary btn-sm">SUBMIT</button> </div>
@@ -37,9 +37,11 @@
                   <div class="post-container">
                     <div class="posts-Vote">
                       <span>
-                        <i class="fas fa-caret-left vote-icon"></i>
+                        <a href="/posts/<%= posts[i].id %>/down" class="btn btn-link btn-sm" id="downvote_<%=posts[i]%>"><i class="fas fa-caret-left vote-icon"></i></a>
+
                         <%= posts[i].votes %>
-                        <i class="fas fa-caret-right vote-icon"></i>
+                        <a href="/posts/<%= posts[i].id %>/up" class="btn btn-link btn-sm" id="upvote_<%=posts[i]%>"><i class="fas fa-caret-right vote-icon"></i></a>
+
                       </span>
                     </div>
                     <div class="posts-Title">

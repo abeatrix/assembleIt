@@ -29,7 +29,11 @@ app.use(session({
     cookie: {
         maxAge: 1000 * 60 * 60 * 60 * 24 * 7 * 2
     }
-}))
+}));
+app.use(function (req, res, next){
+    res.locals.user = req.session.currentUser;
+    next();
+})
 
 app.locals.moment = require('moment');
 

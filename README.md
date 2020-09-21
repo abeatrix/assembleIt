@@ -3,18 +3,20 @@ A messaging board built in mongoDB. Or a reddit-clone in short.
 
 ## Wireframes
 <img src="https://i.ibb.co/4NbwHqx/assemble-It-WF-001.png" alt="assemble-It-WF-001" border="0">
+<img src="https://i.ibb.co/Y2gYGwC/assemble-It-WF-008.png" alt="assemble-It-WF-008" border="0">
+<img src="https://i.ibb.co/9Nb570K/assemble-It-WF-009.png" alt="assemble-It-WF-009" border="0">
+
+## User Stories
 <img src="https://i.ibb.co/TktxMrf/assemble-It-WF-002.png" alt="assemble-It-WF-002" border="0">
 <img src="https://i.ibb.co/JFb4PjM/assemble-It-WF-003.png" alt="assemble-It-WF-003" border="0">
 <img src="https://i.ibb.co/vZvhQqK/assemble-It-WF-005.png" alt="assemble-It-WF-005" border="0">
 <img src="https://i.ibb.co/S3HDh6k/assemble-It-WF-006.png" alt="assemble-It-WF-006" border="0">
-</br> Color Used: </br>
 
+</br> Color Used: </br>
 Navbar - ![#e3f2fd](https://via.placeholder.com/15/e3f2fd/000000?text=+) `#e3f2fd` Navbar Font - ![#307DF6](https://via.placeholder.com/15/307DF6/000000?text=+) `#307DF6` Body Font - ![#007CFF](https://via.placeholder.com/15/007CFF/000000?text=+) `#007CFF`  Sub-body Font- ![#989898](https://via.placeholder.com/15/989898/000000?text=+) `#989898`
 
-## User Stories
-
 ## ERD
-<img src="https://i.ibb.co/hXD7zcm/assemble-It.png" alt="assemble-It" border="0">
+<img src="https://i.ibb.co/qycvKVq/assemble-It.png" alt="assemble-It" border="0">
 
 ## MVP
 A simple bulletin board that allows registered users to browse and create discussion threads.
@@ -24,13 +26,23 @@ Registered users:
 1. delete post they created
 1. delete their account
 
+## Milestones
+- Working Server with Routes
+- Models with Schema setup
+- CRUD functionality
+- Voting System
+- User Authentication
+- Views Styling
+
 ## Stretch Goals
 - sub-communities
 - display pictures in posts
 - comments section
 - light/dark mode
 - upvote system
-- display pictures in posts
+- user profile pictures
+- dropdown menus
+<img src="https://i.ibb.co/74T5t25/assemble-It-WF-010.png" alt="assemble-It-WF-010" border="0">
 
 ## Technologies Used
 - MongoDB

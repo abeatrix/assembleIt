@@ -31,6 +31,7 @@ router.get("/newPost", (req, res) => {
   }
 });
 
+
 // new comment route
 router.get("/:id/newComment", async (req, res) => {
   try {
@@ -162,5 +163,27 @@ router.delete("/:id", async (req, res) => {
     res.send({ message: "Internal server error" });
   }
 });
+
+
+// new voting route
+router.get("/:id/:votedirection", async (req, res) => {
+  console.log(`HI upvotes`)
+  try {
+    const foundPost = await db.Post.findById(req.params.id);
+    console.log(foundPost)
+    if(req.params.votedirection === "up") {
+      foundPost.votes += 1;
+    } else if (req.params.votedirection === "down"){
+      foundPost.votes -= 1;
+    }
+    await foundPost.save();
+    console.log(foundPost)
+    res.redirect("/");
+  } catch (error) {
+    console.log(error)
+    res.send({ message: "Internal server error" });
+  }
+});
+
 
 module.exports = router;
