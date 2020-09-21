@@ -76,7 +76,7 @@ router.post("/", async (req, res) => {
     foundUser.posts.push(createdPost);
     await foundUser.save();
 
-    res.redirect("/");
+    res.redirect(`/posts/${req.body.subreddit}`);
   } catch (error) {
     console.log(error);
     res.send({ message: "Internal server error" });
