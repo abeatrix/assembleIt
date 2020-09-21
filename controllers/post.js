@@ -67,8 +67,10 @@ router.post("/comments", async (req, res) => {
 // create route
 router.post("/", async (req, res) => {
   try {
-    const createdPost = await db.Post.create(req.body);
     const foundUser = await db.User.findById(req.body.user);
+    const username = foundUser.username;
+    req.body.username = username;
+    const createdPost = await db.Post.create(req.body);
 
     foundUser.posts.push(createdPost);
     await foundUser.save();
