@@ -7,15 +7,17 @@
 
 
     <div class='submitPost'>
-        <h3>Your Search result</h3>
-        <% for(let i = results.length-1; i >= 0; i--){ %>
-            <li>
-                  <div class="posts-Title">
-                    <a href="/posts/<%= results[i].id %>"> <%= results[i].title %></a>
-                    <br><small>Submitted <%= moment(results[i].createdAt).startOf('hour').fromNow(); %> by <%= results[i].username %> </small>
-                </div>
-            </li>
-        <% } %>
+        <h3><%= results.length %> Search result(s)</h3>
+        <ul>
+            <% for(let i = results.length-1; i >= 0; i--){ %>
+                <li>
+                    <div class="posts-Title">
+                        <a href="/posts/<%= results[i].id %>"> <%= results[i].title %></a>
+                        <br><small>Submitted <%= moment(results[i].createdAt).startOf('hour').fromNow(); %> by <%= results[i].username %> </small>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
     </div>
 
 

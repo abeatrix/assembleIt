@@ -2,6 +2,7 @@
 <html lang="en">
     <%- include('../partials/head.ejs', {title: "Edit Post"}) %>
 <body>
+    <% console.log(user) %>
     <!-- navbar -->
     <%- include('../partials/nav.ejs') %>
     <a id="top"></a>
@@ -23,7 +24,7 @@
         <div class="post-show-edit">
           <br><small>Submitted on <%= moment(post.createdAt).format('llll'); %></small>
 
-          <% if(user.id == post.user){ %>
+          <% if(user == post.user){ %>
           <form action="/posts/<%= post._id %>/edit">
             <button type="submit" class="btn btn-link btn-sm">UPDATE</button>
           </form> |
