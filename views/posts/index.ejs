@@ -37,12 +37,40 @@
                   <div class="post-container">
                     <div class="posts-Vote">
                       <span>
-                        <a href="/posts/<%= posts[i].id %>/down" class="btn btn-link btn-sm" id="downvote_<%=posts[i]%>"><i class="fas fa-caret-left vote-icon"></i></a>
 
-                        <%= posts[i].votes %>
-                        <a href="/posts/<%= posts[i].id %>/up" class="btn btn-link btn-sm" id="upvote_<%=posts[i]%>"><i class="fas fa-caret-right vote-icon"></i></a>
+
+                        <button type="button" class="btn btn-link btn-sm" id="downvote_<%=posts[i].id%>"><i class="fas fa-caret-left vote-icon"></i></button>
+
+                        <span id="votes_<%=posts[i].id%>"><%= posts[i].votes %></span>
+
+                        <button type="button" class="btn btn-link btn-sm" id="upvote_<%=posts[i].id%>"><i class="fas fa-caret-right vote-icon"></i></button>
+                        
+                        <script>
+                          
+                          $('#upvote_<%=posts[i].id%>').click(function () {
+                            $.ajax({
+                              url: "/posts/<%= posts[i].id%>/up"
+                            })
+                            .done((data) => {
+                              $("#votes_<%=posts[i].id%>").text(data.votes);
+                            })
+                            
+                          })
+                      
+                          $('#downvote_<%=posts[i].id%>').click(function () {
+                            $.ajax({
+                              url: "/posts/<%= posts[i].id%>/down"
+                            })
+                            .done((data) => {
+                              $("#votes_<%=posts[i].id%>").text(data.votes);
+                            })
+                          })
+
+                      </script>
 
                       </span>
+
+
                     </div>
                     <div class="posts-Title">
                       <a href="/posts/<%= posts[i].id %>"> <%= posts[i].title %></a>
