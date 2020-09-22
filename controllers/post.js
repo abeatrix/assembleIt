@@ -15,7 +15,7 @@ router.get("/search", async (req, res) => {
     console.log(results)
     const context = {
       results: results,
-      user: req.session.currentUser,
+
     };
     res.render("posts/search.ejs", context);
   } catch (error) {
@@ -31,7 +31,7 @@ router.get("/r/:subreddit", async (req, res) => {
     const foundPosts = await db.Post.find({subreddit: req.params.subreddit});
     const context = {
       posts: foundPosts,
-      user: req.session.currentUser
+
     };
     res.render("posts/index.ejs", context);
   } catch (error) {
@@ -43,7 +43,6 @@ router.get("/r/:subreddit", async (req, res) => {
 router.get("/newPost", (req, res) => {
   try {
     const context = {
-      user: req.session.currentUser,
     }
     res.render("posts/new.ejs", context);
   } catch (error) {

@@ -1,4 +1,4 @@
-// console.log("votes");
+console.log("votes");
 
 // const upvoteicon = document.getElementById(`upvote_${posts[i]}`);
 //     upvoteicon.addEventListener("click", function(){
