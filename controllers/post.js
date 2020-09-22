@@ -31,7 +31,6 @@ router.get("/r/:subreddit", async (req, res) => {
     const foundPosts = await db.Post.find({subreddit: req.params.subreddit});
     const context = {
       posts: foundPosts,
-
     };
     res.render("posts/index.ejs", context);
   } catch (error) {
