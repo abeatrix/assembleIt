@@ -29,6 +29,10 @@ small{
     justify-content: center;
 }
 
+.on {
+    color: red;
+}
+
 /* POST BODY */
 .post-show-right{
     flex: 9;
