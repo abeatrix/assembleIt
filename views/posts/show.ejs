@@ -24,6 +24,8 @@
         <div class="post-show-edit">
           <br><small>Submitted on <%= moment(post.createdAt).format('llll'); %></small>
 
+          <%- include('../partials/sharebtn') %>
+
           <% if(user == post.user){ %>
           <form action="/posts/<%= post._id %>/edit">
             <button type="submit" class="btn btn-link btn-sm">UPDATE</button>

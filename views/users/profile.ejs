@@ -31,8 +31,8 @@
                                             <form action="/posts/<%= user.posts[i]._id %>/edit">
                                                 <button type="submit" class="btn btn-link btn-sm pull-left"><small>EDIT</small></button>
                                             </form>
-                                            <form action="/posts/<%= user.posts[i]._id %>?_method=DELETE" method="POST">
-                                                <button type="submit" class="btn btn-link btn-sm pull-left"><small>DELETE</small></button>
+                                            <form action="/posts/<%= user.posts[i]._id %>?_method=DELETE" method="POST" onclick="return confirm('Are you sure you wish to delete this post?');">
+                                                <button type="submit" class="btn btn-link btn-sm pull-left delete-btn"><small>DELETE</small></button>
                                             </form>
                                         </div>
                                     </article>
