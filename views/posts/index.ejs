@@ -45,28 +45,7 @@
 
                         <button type="button" class="btn btn-link btn-sm" id="upvote_<%=posts[i].id%>"><i class="fas fa-caret-right vote-icon"></i></button>
                         
-                        <script>
-                          
-                          $('#upvote_<%=posts[i].id%>').click(function () {
-                            $.ajax({
-                              url: "/posts/<%= posts[i].id%>/up"
-                            })
-                            .done((data) => {
-                              $("#votes_<%=posts[i].id%>").text(data.votes);
-                            })
-                            
-                          })
-                      
-                          $('#downvote_<%=posts[i].id%>').click(function () {
-                            $.ajax({
-                              url: "/posts/<%= posts[i].id%>/down"
-                            })
-                            .done((data) => {
-                              $("#votes_<%=posts[i].id%>").text(data.votes);
-                            })
-                          })
-
-                      </script>
+                        <%- include("../partials/votes.ejs", posts[i]) %>
 
                       </span>
 
