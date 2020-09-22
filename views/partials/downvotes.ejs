@@ -1,0 +1,53 @@
+<script>
+    $('#downvote_<%=id%>').click(function () {
+
+        if (!$('#downvote_<%=id%>').hasClass('on')){
+            if ($("#upvote_<%=id%>").hasClass('on')){
+                $("#upvote_<%=id%>").toggleClass("on");
+                $('#downvote_<%=id%>').toggleClass("on");
+
+                $.ajax({
+                url: "/posts/<%= id%>/down"
+                })
+                .done((data) => {
+                    $("#votes_<%=id%>").text(data.votes);
+                });
+
+                $(".up<%=id%>").css("color", "blue");
+
+                $.ajax({
+                url: "/posts/<%= id%>/down"
+                })
+                .done((data) => {
+                $("#votes_<%=id%>").text(data.votes);
+                });
+
+                $(".down<%=id%>").css("color", "red");
+
+            } else {
+                $('#downvote_<%=id%>').toggleClass('on');
+
+                $.ajax({
+                url: "/posts/<%= id%>/down"
+                })
+                .done((data) => {
+                $("#votes_<%=id%>").text(data.votes);
+                });
+
+                $(".down<%=id%>").css("color", "red");
+            }
+  
+        } else {
+            $('#downvote_<%=id%>').toggleClass('on');
+
+            $.ajax({
+            url: "/posts/<%= id%>/up"
+            })
+            .done((data) => {
+            $("#votes_<%=id%>").text(data.votes);
+            });
+
+            $(".down<%=id%>").css("color", "blue");
+        }
+    });
+</script>

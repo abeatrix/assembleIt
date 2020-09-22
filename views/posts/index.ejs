@@ -39,13 +39,14 @@
                       <span>
 
 
-                        <button type="button" class="btn btn-link btn-sm" id="downvote_<%=posts[i].id%>"><i class="fas fa-caret-left vote-icon"></i></button>
+                        <button type="button" class="btn btn-link btn-sm" id="downvote_<%=posts[i].id%>"><i class="fas fa-caret-left vote-icon down<%=posts[i].id%>"></i></button>
 
                         <span id="votes_<%=posts[i].id%>"><%= posts[i].votes %></span>
 
-                        <button type="button" class="btn btn-link btn-sm" id="upvote_<%=posts[i].id%>"><i class="fas fa-caret-right vote-icon"></i></button>
+                        <button type="button" class="btn btn-link btn-sm" id="upvote_<%=posts[i].id%>"><i class="fas fa-caret-right vote-icon up<%=posts[i].id%>"></i></button>
                         
-                        <%- include("../partials/votes.ejs", posts[i]) %>
+                        <%- include("../partials/upvotes.ejs", posts[i]) %>
+                        <%- include("../partials/downvotes.ejs", posts[i]) %>
 
                       </span>
 
