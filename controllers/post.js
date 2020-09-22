@@ -5,6 +5,24 @@ const db = require("../models");
 
 // base route /
 
+// Search route
+router.get("/search?", async (req, res) => {
+  console.log(req.query.results)
+  try {
+    const results = await db.Post.find({title: req.query.results});
+    console.log(results)
+    const context = {
+      results: results,
+      user: req.session.currentUser,
+    };
+    res.render("posts/search.ejs", context);
+  } catch (error) {
+    console.log(error)
+    res.send({ message: "Internal server error" });
+  }
+});
+
+
 // subreddit index route
 router.get("/r/:subreddit", async (req, res) => {
   try {
@@ -109,7 +127,7 @@ router.get("/:id", async (req, res) => {
 // edit form
 router.get("/:id/edit", async (req, res) => {
   try {
-    const foundPost = await db.Post.findById(req.params.id);
+    const foundPost = await db.Post.find(req.body.title);
     const context = {
       post: foundPost,
       user: req.session.currentUser,
