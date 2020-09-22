@@ -6,10 +6,12 @@ const db = require("../models");
 // base route /
 
 // Search route
-router.get("/search?", async (req, res) => {
+router.get("/search", async (req, res) => {
   console.log(req.query.results)
   try {
-    const results = await db.Post.find({title: req.query.results});
+    const results = await db.Post.find(
+      { "title" : { $regex : new RegExp(req.query.results, "i") } }
+    );
     console.log(results)
     const context = {
       results: results,
