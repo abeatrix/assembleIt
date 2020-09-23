@@ -54,9 +54,9 @@
                     </div>
                     <div class="posts-Title">
                       <a href="/posts/<%= posts[i].id %>"> <%= posts[i].title %></a>
-                      <br><small>Submitted <%= moment(posts[i].createdAt).startOf('hour').fromNow(); %> by <%= posts[i].username %> </small>
+                      <br><small>Submitted <%= moment(posts[i].createdAt).startOf('hour').fromNow(); %> by <a href="/users/<%= posts[i].user %>"><%= posts[i].username %></a> in
+                      <a href="/posts/r/<%= posts[i].subreddit%>">r/<%= posts[i].subreddit%></a></small>
                     </div>
-                    <div class="post-subreddit"><a href="/posts/<%= posts[i].subreddit%>"></a></div>
                     <div class="posts-Comment">
                       <a href="/posts/<%= posts[i].id%>#comments"><span><i class="fas fa-comment-dots"></i> comments</span></a>
                     </div>

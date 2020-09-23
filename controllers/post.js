@@ -77,7 +77,7 @@ router.post("/comments", async (req, res) => {
     foundPost.comments.push(createdComment);
     await foundPost.save();
 
-    res.redirect(`/posts/${foundPost._id}`);
+    res.redirect(`/posts/${foundPost.id}`);
   } catch (error) {
     console.log(error);
     res.send({ message: "Internal server error" });
