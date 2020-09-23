@@ -51,12 +51,18 @@
         <!-- COMMENT SESSION -->
         <a id="comments">
           <div class="submitPost">
+            <!-- If there is no comment -->
+            <% if(comments.length === 0) { %>
+              <div class="submitPost"></div>
+              <div id="no-comment"><p>No Comments Yet.</p><p>Be the first to share your thoughts!</p></div>
+            <% } %>
+
             <% if (user) { %>
             <div class="submitComment">
               <form action="/posts/comments" method="POST">
                   <div class="form-group user-edit-form">
-                      <label>Make a comment</label>
-                      <input type="text" name="body" class="form-control" placeholder="Enter text here">
+                      <small>Comment as u/<%=user.username%></small>
+                      <input type="text" name="body" class="form-control" placeholder="What do you think?">
                   </div>
                   <input type="text" name="user" class="form-control" value="<%=user.id%>" hidden>
                   <input type="text" name="post" class="form-control" value="<%=post.id%>" hidden>
