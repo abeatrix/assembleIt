@@ -12,11 +12,11 @@
         <div class="post-show-votes">
 
           <button type="button" class="btn btn-link btn-sm" id="upvote_<%=post.id%>"><i class="fas fa-caret-up vote-icon up<%=post.id%>"></i></button>
-          
+
           <span id="votes_<%=post.id%>"><%= post.votes %></span>
-          
+
           <button type="button" class="btn btn-link btn-sm" id="downvote_<%=post.id%>"><i class="fas fa-caret-down vote-icon down<%=post.id%>"></i></button>
-                        
+
           <%- include("../partials/upvotes.ejs", post) %>
           <%- include("../partials/downvotes.ejs", post) %>
         </div>
@@ -28,7 +28,8 @@
         <div class="post-show-body"><pv><%=post.body%></pv></div>
 
         <div class="post-show-edit">
-          <br><small>Submitted <%= moment(post.createdAt).startOf('hour').fromNow(); %></small>
+          <br><small>Submitted <%= moment(post.createdAt).startOf('hour').fromNow(); %> by u/<a href="/users/<%= post.user %>"><%= post.username %></a> in
+            <a href="/posts/r/<%= post.subreddit%>">r/<%= post.subreddit%></a></small>
 
           <%- include('../partials/sharebtn') %>
 
