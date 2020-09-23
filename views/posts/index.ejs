@@ -13,7 +13,7 @@
       <% } %>
 
       <% if (!user) { %>
-        <a href="/signup" class="signupFrontPage"><h2 class="signupFrontPage blinking">SING UP HERE</h2></a>
+        <a href="/signup" class="signupFrontPage"><h2 class="signupFrontPage blinking">SIGN UP HERE</h2></a>
       <% } %>
 
       <% if (user) { %>
@@ -44,7 +44,7 @@
                         <span id="votes_<%=posts[i].id%>"><%= posts[i].votes %></span>
 
                         <button type="button" class="btn btn-link btn-sm" id="upvote_<%=posts[i].id%>"><i class="fas fa-caret-right vote-icon up<%=posts[i].id%>"></i></button>
-                        
+
                         <%- include("../partials/upvotes.ejs", posts[i]) %>
                         <%- include("../partials/downvotes.ejs", posts[i]) %>
 

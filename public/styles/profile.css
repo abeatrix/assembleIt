@@ -10,10 +10,10 @@
 	padding: 20px;
 	border-radius: 15px;
 }
-.profile-left{
+.profile-right{
 	background-color: #e3f2fd;
 	flex: 3;
-	max-height: 300px;
+	max-height: 500px;
 	margin: 10px;
 	padding: 20px;
 	border-radius: 10px;
@@ -45,6 +45,7 @@ form, #profile-btn{
 
 .user-edit-form{
 	margin-top: 10%;
+	text-align: center;
 }
 .profile-nopost{
 	margin-top: 20px;
