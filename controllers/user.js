@@ -49,7 +49,10 @@ router.get("/:id", (req, res) => {
             console.log(err);
             return res.send(err);
         }
-        const context = { user: foundUser };
+        const context = {
+            user: foundUser,
+            currentUser: req.session.currentUser,
+         };
         res.render("users/profile", context);
     });
 });
