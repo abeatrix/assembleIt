@@ -10,9 +10,15 @@
       <!-- LEFT = VOTES BAR -->
       <div class="post-show-left">
         <div class="post-show-votes">
-          <p><a href="/posts/<%= post._id %>/up" class="btn btn-link btn-sm"><i class="fas fa-caret-up vote-icon"></i></a></p>
-          <p><%= post.votes %></p>
-          <p><a href="/posts/<%= post._id %>/down" class="btn btn-link btn-sm"><i class="fas fa-caret-down vote-icon"></i></a></p>
+
+          <button type="button" class="btn btn-link btn-sm" id="upvote_<%=post.id%>"><i class="fas fa-caret-up vote-icon up<%=post.id%>"></i></button>
+          
+          <span id="votes_<%=post.id%>"><%= post.votes %></span>
+          
+          <button type="button" class="btn btn-link btn-sm" id="downvote_<%=post.id%>"><i class="fas fa-caret-down vote-icon down<%=post.id%>"></i></button>
+                        
+          <%- include("../partials/upvotes.ejs", post) %>
+          <%- include("../partials/downvotes.ejs", post) %>
         </div>
       </div>
 
