@@ -20,7 +20,8 @@ router.get("/search", async (req, res) => {
     res.render("posts/search.ejs", context);
   } catch (error) {
     console.log(error)
-    res.send({ message: "Internal server error" });
+    req.flash('error', error);
+    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
   }
 });
 
@@ -34,7 +35,8 @@ router.get("/r/:subreddit", async (req, res) => {
     };
     res.render("posts/index.ejs", context);
   } catch (error) {
-    res.send({ message: "Internal server error" });
+    req.flash('error', error);
+    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
   }
 });
 
@@ -45,7 +47,8 @@ router.get("/newPost", (req, res) => {
     }
     res.render("posts/new.ejs", context);
   } catch (error) {
-    res.send({ message: "Internal server error" });
+    req.flash('error', error);
+    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
   }
 });
 
@@ -60,7 +63,8 @@ router.get("/:id/newComment", async (req, res) => {
     }
     res.render("comments/new.ejs", context);
   } catch (error) {
-    res.send({ message: "Internal server error" });
+    req.flash('error', error);
+    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
   }
 });
 
@@ -80,7 +84,8 @@ router.post("/comments", async (req, res) => {
     res.redirect(`/posts/${foundPost.id}`);
   } catch (error) {
     console.log(error);
-    res.send({ message: "Internal server error" });
+    req.flash('error', error);
+    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
   }
 });
 
@@ -98,7 +103,8 @@ router.post("/", async (req, res) => {
     res.redirect(`/posts/r/${req.body.subreddit}`);
   } catch (error) {
     console.log(error);
-    res.send({ message: "Internal server error" });
+    req.flash('error', error);
+    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
   }
 });
 
@@ -120,7 +126,8 @@ router.get("/:id", async (req, res) => {
     };
     res.render("posts/show", context);
   } catch (error) {
-    res.send({ message: "Internal server error" });
+    req.flash('error', error);
+    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
   }
 });
 
@@ -135,7 +142,8 @@ router.get("/:id/edit", async (req, res) => {
     console.log(foundPost)
     res.render("posts/edit.ejs", context);
   } catch (error) {
-    res.send({ message: "Internal server error" });
+    req.flash('error', error);
+    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
   }
 });
 
@@ -145,7 +153,8 @@ router.put("/:id", async (req, res) => {
     const foundPost = await db.Post.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.redirect(`/posts/${foundPost._id}`);
   } catch (error) {
-    res.send({ message: "Internal server error" });
+    req.flash('error', error);
+    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
   }
 });
 
@@ -179,7 +188,8 @@ router.delete("/:id", async (req, res) => {
     await db.Post.findByIdAndDelete(req.params.id);
     res.redirect("/");
   } catch (error) {
-    res.send({ message: "Internal server error" });
+    req.flash('error', error);
+    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
   }
 });
 
@@ -194,7 +204,8 @@ router.get("/:id/up", async (req, res) => {
     res.json(foundPost);
   } catch (error) {
       console.log(error)
-      res.send({ message: "Internal server error" });
+      req.flash('error', error);
+    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
   }
 });
 
@@ -208,7 +219,8 @@ router.get("/:id/down", async (req, res) => {
     res.json(foundPost);
   } catch {
     console.log(error)
-    res.send({ message: "Internal server error" });
+    req.flash('error', error);
+    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
   }
 
 });

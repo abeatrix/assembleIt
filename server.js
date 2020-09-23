@@ -36,6 +36,10 @@ app.use(function (req, res, next){
     res.locals.user = req.session.currentUser;
     next();
 })
+app.use(function(req, res, next){
+    res.locals.message = req.flash();
+    next();
+});
 
 app.locals.moment = require('moment');
 
