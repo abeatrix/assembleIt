@@ -9,21 +9,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/posts/newPost">Submit Post</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Subs</a>
-            </li>
+
         </ul>
         <!-- Search Bar -->
         <form action="/posts/search" method="GET" class="form-inline">
             <input class="form-control mr-sm-2" type="text" name="results" placeholder="Search" aria-label="Search Topics">
         </form>
-
         <span class="navbar-text">
             <% if(user) { %>
                 <a href="/users/<%=user.id%>"><i class="fas fa-user"></i> <%=user.username%></a>

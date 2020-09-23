@@ -13,7 +13,7 @@
                 <li>
                     <div class="posts-Title">
                         <a href="/posts/<%= results[i].id %>"> <%= results[i].title %></a>
-                        <br><small>Submitted <%= moment(results[i].createdAt).startOf('hour').fromNow(); %> by <%= results[i].username %> </small>
+                        <br><small>Submitted <%= moment(results[i].createdAt).startOf('hour').fromNow(); %> by <%= results[i].username %> in <a href="/posts/r/<%= results[i].subreddit%>">r/<%= results[i].subreddit%></a></small>
                     </div>
                 </li>
             <% } %>
