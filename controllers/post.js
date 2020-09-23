@@ -77,7 +77,7 @@ router.post("/comments", async (req, res) => {
     foundPost.comments.push(createdComment);
     await foundPost.save();
 
-    res.redirect(`/posts/${foundPost._id}`);
+    res.redirect(`/posts/${foundPost.id}`);
   } catch (error) {
     console.log(error);
     res.send({ message: "Internal server error" });
@@ -127,7 +127,7 @@ router.get("/:id", async (req, res) => {
 // edit form
 router.get("/:id/edit", async (req, res) => {
   try {
-    const foundPost = await db.Post.find(req.body.title);
+    const foundPost = await db.Post.find(req.params.id);
     const context = {
       post: foundPost,
       user: req.session.currentUser,

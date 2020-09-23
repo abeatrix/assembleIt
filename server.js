@@ -51,6 +51,7 @@ const authRequired = (req, res, next) => {
 app.get("/", async (req, res) => {
     try {
         const foundPosts = await db.Post.find({});
+    
         const context = {
             posts: foundPosts,
             user: req.session.currentUser,
