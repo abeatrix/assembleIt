@@ -12,11 +12,11 @@
         <div class="post-show-votes">
 
           <button type="button" class="btn btn-link btn-sm" id="upvote_<%=post.id%>"><i class="fas fa-caret-up vote-icon up<%=post.id%>"></i></button>
-          
+
           <span id="votes_<%=post.id%>"><%= post.votes %></span>
-          
+
           <button type="button" class="btn btn-link btn-sm" id="downvote_<%=post.id%>"><i class="fas fa-caret-down vote-icon down<%=post.id%>"></i></button>
-                        
+
           <%- include("../partials/upvotes.ejs", post) %>
           <%- include("../partials/downvotes.ejs", post) %>
         </div>
@@ -28,7 +28,8 @@
         <div class="post-show-body"><pv><%=post.body%></pv></div>
 
         <div class="post-show-edit">
-          <br><small>Submitted <%= moment(post.createdAt).startOf('hour').fromNow(); %></small>
+          <br><small>Submitted <%= moment(post.createdAt).startOf('hour').fromNow(); %> by u/<a href="/users/<%= post.user %>"><%= post.username %></a> in
+            <a href="/posts/r/<%= post.subreddit%>">r/<%= post.subreddit%></a></small>
 
           <%- include('../partials/sharebtn') %>
 
@@ -50,12 +51,18 @@
         <!-- COMMENT SESSION -->
         <a id="comments">
           <div class="submitPost">
+            <!-- If there is no comment -->
+            <% if(comments.length === 0) { %>
+              <div class="submitPost"></div>
+              <div id="no-comment"><p>No Comments Yet.</p><p>Be the first to share your thoughts!</p></div>
+            <% } %>
+
             <% if (user) { %>
             <div class="submitComment">
               <form action="/posts/comments" method="POST">
                   <div class="form-group user-edit-form">
-                      <label>Make a comment</label>
-                      <input type="text" name="body" class="form-control" placeholder="Enter text here">
+                      <small>Comment as u/<%=user.username%></small>
+                      <input type="text" name="body" class="form-control" placeholder="What do you think?">
                   </div>
                   <input type="text" name="user" class="form-control" value="<%=user.id%>" hidden>
                   <input type="text" name="post" class="form-control" value="<%=post.id%>" hidden>

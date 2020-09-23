@@ -7,20 +7,25 @@
 
     <div class="submitPost">
         <% if(user) { %>
-        <form action="/posts" method="POST">
+        <form action="/posts" method="POST"  class="was-validated">
             <div class="form-group user-edit-form">
                 <label>Create a Post</label>
-                <input type="text" name="subreddit" class="form-control" placeholder="Subreddit">
-                <input type="text" name="title" class="form-control" placeholder="Tilte">
+                <input type="text" name="subreddit" class="form-control" placeholder="Subreddit" required>
             </div>
-                <div class="form-group">
-              <textarea class="form-control" name="body" rows="3" placeholder="Enter Text Here"></textarea>
+            <div class="form-group">
+                <input type="text" name="title" class="form-control is-invalid " placeholder="Title" required>
+                <div class="invalid-tooltip">
+                    Please enter an unique title.
+                  </div>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control is-invalid " name="body" rows="3" placeholder="Enter Text Here" required></textarea>
             </div>
             <input type="text" name="user" class="form-control" value="<%=user.id%>" hidden>
             <div class="submitbtn"> <input type="submit" class="btn btn-primary btn-sm" value="SUBMIT POST"> </div>
           </form>
           <% } else { %>
-            <a href="/login">Log In</a> | <a href="/signup">Sign Up</a>
+            <div class="form-group user-edit-form"><a href="/login">Log In</a> / <a href="/signup">Sign Up</a></div>
         <% } %>
     </div>
 

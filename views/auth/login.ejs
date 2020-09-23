@@ -9,7 +9,7 @@
     <div class="posts">
         <div class="auth-form">
             <div class="login-form">
-                <form action="/login" method="POST">
+                <form action="/login" method="POST" class="was-validated">
                     <h4 class="text-center">Welcome Back</h4>
                     <div class="form-group">
                         <input type="text" name="username" class="form-control" placeholder="Username" required="required">
@@ -19,6 +19,7 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        <small class="error-msgs"><%=message.error%></small>
                     </div>
                     <div class="clearfix">
 

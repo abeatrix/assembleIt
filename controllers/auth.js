@@ -9,13 +9,19 @@ router.get("/signup", (req, res) => {
     res.render("auth/signup", {user: req.session.currentUser});
 });
 
+// REGISTER FORM
+router.get("/404", (req, res) => {
+    res.render("auth/404", {user: req.session.currentUser});
+});
+
 
 // REGISTER POST
 router.post("/signup", async (req, res) => {
     try {
         const foundUser = await db.User.findOne({ username: req.body.username });
         if(foundUser){                                                                        // if username exists
-            return res.send({ message: "User Exists"});
+            req.flash('error', '*Username Exists');
+            return res.redirect("signup");
         }
         const salt = await bcrypt.genSalt(10);
 
@@ -25,8 +31,9 @@ router.post("/signup", async (req, res) => {
         await db.User.create(req.body);
 
         res.redirect("/login");                                                              // redirect to login
-    } catch(error) {
-        res.send({ message: "Internal Server Error", err: err });                            // redirect to 404 Page if there is an error
+    } catch(err) {
+        req.flash('error', 'Sign up error');
+        return res.redirect("404");                                                          // redirect to 404 Page if there is an error
     }
 });
 
@@ -43,13 +50,15 @@ router.post("/login", async (req, res) => {
         const foundUser = await db.User.findOne({ username: req.body.username });
 
         if(!foundUser){                                                                     // if user does not exist => error
-            return res.send({message: "User does not exist"});
+            req.flash('error', "User does not exist");
+            return res.redirect("login");
         }
 
         const match = await bcrypt.compare(req.body.password, foundUser.password);          // if user exist then compare login info with db
 
         if(!match){                                                                         //if login info doesn't match db
-            return res.send({message: "Incorrect login info"})
+            req.flash('error', "Incorrect login info");
+            return res.redirect("login");
         }
 
         req.session.currentUser = {                                                         // if login info match, create session for authentication
@@ -59,7 +68,8 @@ router.post("/login", async (req, res) => {
 
         res.redirect("/")                                                                   // redirect to home after logged-in
     } catch(err) {
-        res.send({ message: "Internal Server Error", err: err });
+        req.flash('error', err);
+        return res.redirect("404");                                                          // redirect to 404 Page if there is an error
     }
 })
 

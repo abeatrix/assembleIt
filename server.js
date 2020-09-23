@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const methodOverride = require("method-override");
 const session = require("express-session");
+const flash  = require('req-flash');
 const MongoStore = require("connect-mongo")(session);
 
 /* INTERNAL MODULES */
@@ -30,10 +31,15 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 60 * 24 * 7 * 2
     }
 }));
+app.use(flash());
 app.use(function (req, res, next){
     res.locals.user = req.session.currentUser;
     next();
 })
+app.use(function(req, res, next){
+    res.locals.message = req.flash();
+    next();
+});
 
 app.locals.moment = require('moment');
 
@@ -51,10 +57,11 @@ const authRequired = (req, res, next) => {
 app.get("/", async (req, res) => {
     try {
         const foundPosts = await db.Post.find({});
-    
+        const allSubreddits = await db.Post.distinct("subreddit");
         const context = {
             posts: foundPosts,
             user: req.session.currentUser,
+            subreddits: allSubreddits,
         };
         res.render("posts/index.ejs", context);
     } catch (error) {

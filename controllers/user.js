@@ -13,9 +13,10 @@ router.get("/", async (req, res) => {
             user: req.session.currentUser,
         }
         res.render("users/index", context);
-    } catch (err){
-        console.log(err);
-        res.send({ message: "Internal Server Error "});
+    } catch (error){
+        console.log(error);
+        req.flash('error', error);
+    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
     }
 });
 

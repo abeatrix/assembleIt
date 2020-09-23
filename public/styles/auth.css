@@ -60,3 +60,13 @@
 .auth-form h4 {
 	margin: 50px auto 20px;
 }
+
+.error-msgs{
+	color: red;
+	text-align: center;
+}
+
+.error-404{
+	color: brown;
+	text-align: center;
+}

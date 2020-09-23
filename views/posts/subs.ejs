@@ -1,0 +1,26 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs', {title: "FRONT PAGE"}) %>
+
+<body>
+    <!-- navbar -->
+    <%- include('../partials/nav.ejs') %>
+    <a id="top"></a>
+    <div class='submitPost'>
+        <h3>list of subs</h3>
+        <% for(let i = 0; i<subreddits.length; i++){ %>
+            <p><a href="/r/<%=subreddits[i]%>"> <%=subreddits[i]%> </a></p>
+        <% } %>
+    </div>
+
+
+
+
+
+    <!-- footer -->
+    <%- include('../partials/footer.ejs') %>
+
+</body>
+</html>
