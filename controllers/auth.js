@@ -25,7 +25,7 @@ router.post("/signup", async (req, res) => {
         await db.User.create(req.body);
 
         res.redirect("/login");                                                              // redirect to login
-    } catch(error) {
+    } catch(err) {
         res.send({ message: "Internal Server Error", err: err });                            // redirect to 404 Page if there is an error
     }
 });
@@ -67,6 +67,7 @@ router.post("/login", async (req, res) => {
 // LOGOUT / DELETE SESSION
 router.delete("/logout", async (req, res) => {
     await req.session.destroy();
+    req.flash('successMessage', 'You are logged out.');
     res.redirect("/");                                                                  // redirect to home after logged-out
 })
 
