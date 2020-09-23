@@ -57,10 +57,11 @@ const authRequired = (req, res, next) => {
 app.get("/", async (req, res) => {
     try {
         const foundPosts = await db.Post.find({});
-
+        const allSubreddits = await db.Post.distinct("subreddit");
         const context = {
             posts: foundPosts,
             user: req.session.currentUser,
+            subreddits: allSubreddits,
         };
         res.render("posts/index.ejs", context);
     } catch (error) {

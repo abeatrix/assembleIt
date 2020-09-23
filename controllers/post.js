@@ -25,13 +25,30 @@ router.get("/search", async (req, res) => {
   }
 });
 
+// subreddit index route
+router.get("/r", async (req, res) => {
+  try {
+    const foundPosts = await db.Post.find({subreddit: req.params.subreddit});
+    const allSubreddits = await db.Post.distinct("subreddit");
+    const context = {
+      posts: foundPosts,
+      subreddits: allSubreddits,
+    };
+    res.render("posts/subs", context);
+  } catch (error) {
+    req.flash('error', error);
+    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
+  }
+});
 
 // subreddit index route
 router.get("/r/:subreddit", async (req, res) => {
   try {
     const foundPosts = await db.Post.find({subreddit: req.params.subreddit});
+    const allSubreddits = await db.Post.distinct("subreddit");
     const context = {
       posts: foundPosts,
+      subreddits: allSubreddits,
     };
     res.render("posts/index.ejs", context);
   } catch (error) {
@@ -112,6 +129,7 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const foundPost = await db.Post.findById(req.params.id);
+    const allSubreddits = await db.Post.distinct("subreddit");
     const foundComments = [];
     for (let i = 0; i < foundPost.comments.length; i++) {
       const comment = await db.Comment.findById(foundPost.comments[i]);
@@ -121,6 +139,7 @@ router.get("/:id", async (req, res) => {
 
     const context = {
       post: foundPost,
+      subreddits: allSubreddits,
       user: req.session.currentUser,
       comments: foundComments,
     };
