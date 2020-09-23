@@ -68,7 +68,7 @@
                   <% for(let i=comments.length-1; i >= 0; i--){ %>
                       <li>
                         <%= comments[i][0].body %>
-                        <br><small>Submitted <%= moment(post.createdAt).startOf('hour').fromNow(); %> by <%=comments[i][1].username%> </small>
+                        <br><small>Submitted <%= moment(post.createdAt).startOf('hour').fromNow(); %> by <a href="../users/<%=comments[i][1]._id%>"><%=comments[i][1].username%></a> </small>
                       </li>
                   <% } %>
                   <li><a href="#top"><i class="fas fa-arrow-up"></i> back to top</a></li>

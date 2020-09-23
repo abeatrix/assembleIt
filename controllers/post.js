@@ -127,7 +127,7 @@ router.get("/:id", async (req, res) => {
 // edit form
 router.get("/:id/edit", async (req, res) => {
   try {
-    const foundPost = await db.Post.find(req.body.title);
+    const foundPost = await db.Post.find(req.params.id);
     const context = {
       post: foundPost,
       user: req.session.currentUser,
