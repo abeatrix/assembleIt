@@ -32,5 +32,5 @@ mongoose.connection.on('error', () => {
 module.exports = {
     User: require('./User.js'),
     Post: require("./Post.js"),
-    Comment: require("./Comment.js")
+    Comment: require("./Comment.js"),
 }
