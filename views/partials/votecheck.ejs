@@ -1,0 +1,14 @@
+
+    <% for(let i = 0; i < post.upvotes.length; i++){ %>
+        <% if(currentUser == post.upvotes[i]){ %>
+            <script data-id="<%= post.id%>">$(`#upvote_${document.currentScript.getAttribute('data-id')}`).toggleClass("on"); </script>
+        <% } %>
+    <% } %>
+
+
+
+    <% for(let i = 0; i < post.downvotes.length; i++){ %>
+        <% if(currentUser == post.downvotes[i]){ %>
+            <script data-id="<%= post.id%>">$(`#upvote_${document.currentScript.getAttribute('data-id')}`).toggleClass("on"); </script>
+        <% } %>
+    <% } %>
