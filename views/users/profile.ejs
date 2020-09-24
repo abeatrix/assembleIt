@@ -27,7 +27,7 @@
                                     <article class="articlePost">
                                         <a href="/posts/<%= user.posts[i]._id %>"> <%= user.posts[i].title %> </a>
                                         <div class="submitbtn">
-                                            <small>Submitted: <%= moment(user.posts[i].createdAt).startOf('hour').fromNow(); %></small>
+                                            <small>Submitted on: <%= moment(user.posts[i].createdAt).fromNow(); %></small>
                                             <% if(user.username === currentUser.username) { %>
                                             <form action="/posts/<%= user.posts[i]._id %>/edit">
                                                 <button type="submit" class="btn btn-link btn-sm pull-left"><small>EDIT</small></button>

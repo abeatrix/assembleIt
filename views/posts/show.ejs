@@ -19,6 +19,25 @@
 
           <%- include("../partials/upvotes.ejs", post) %>
           <%- include("../partials/downvotes.ejs", post) %>
+
+          <% if(user){ %>
+            <% for(let j = 0; j < post.upvotes.length; j++){ %>
+              <% if(user.id == post.upvotes[j]){ %>
+                  <script>$(`#upvote_<%=post.id%>`).toggleClass("on") </script>
+                  <script>$(".up<%=post.id%>").css("color", "red")</script>
+              <% } %>
+            <% } %>
+      
+      
+      
+            <% for(let j = 0; j < post.downvotes.length; j++){ %>
+              <% if(user.id == post.downvotes[j]){ %>
+                  <script>$(`#downvote_<%=post.id%>`).toggleClass("on") </script>
+                  <script>$(".down<%=post.id%>").css("color", "red")</script>
+              <% } %>
+            <% } %>
+            <%}%>  
+
         </div>
       </div>
 
@@ -28,7 +47,7 @@
         <div class="post-show-body"><pv><%=post.body%></pv></div>
 
         <div class="post-show-edit">
-          <br><small>Submitted <%= moment(post.createdAt).startOf('hour').fromNow(); %> by u/<a href="/users/<%= post.user %>"><%= post.username %></a> in
+          <br><small>Submitted <%= moment(post.createdAt).fromNow(); %> by <a href="/users/<%= post.user %>"><%= post.username %></a> in
             <a href="/posts/r/<%= post.subreddit%>">r/<%= post.subreddit%></a></small>
 
           <%- include('../partials/sharebtn') %>
@@ -75,7 +94,7 @@
                   <% for(let i=comments.length-1; i >= 0; i--){ %>
                       <li>
                         <%= comments[i][0].body %>
-                        <br><small>Submitted <%= moment(post.createdAt).startOf('hour').fromNow(); %> by <a href="../users/<%=comments[i][1]._id%>"><%=comments[i][1].username%></a> </small>
+                        <br><small>Submitted <%= moment(comments[i][0].createdAt).fromNow(); %> by <a href="../users/<%=comments[i][1]._id%>"><%=comments[i][1].username%></a> </small>
                       </li>
                   <% } %>
                   <li><a href="#top"><i class="fas fa-arrow-up"></i> back to top</a></li>

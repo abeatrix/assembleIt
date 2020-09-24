@@ -73,7 +73,7 @@
                     </div>
                     <div class="posts-Title">
                       <a href="/posts/<%= posts[i].id %>"> <%= posts[i].title %></a>
-                      <br><small>Submitted <%= moment(posts[i].createdAt).startOf('hour').fromNow(); %> by <a href="/users/<%= posts[i].user %>"><%= posts[i].username %></a> in
+                      <br><small>Submitted <%= moment(posts[i].createdAt).fromNow(); %> by <a href="/users/<%= posts[i].user %>"><%= posts[i].username %></a> in
                       <a href="/posts/r/<%= posts[i].subreddit%>">r/<%= posts[i].subreddit%></a></small>
                     </div>
                     <div class="posts-Comment">
