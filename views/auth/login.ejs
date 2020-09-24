@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs', {title: "LOGIN"}) %>
+
+<body>
+    <!-- navbar -->
+    <%- include('../partials/nav') %>
+
+    <div class="posts">
+        <div class="auth-form">
+            <div class="login-form">
+                <form action="/login" method="POST" class="was-validated">
+                    <h4 class="text-center">Welcome Back</h4>
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control" placeholder="Username" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="Password" required="required">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        <small class="error-msgs"><%=message.error%></small>
+                    </div>
+                    <div class="clearfix">
+
+                        <a href="#" class="float-right">Forgot Password?</a>
+                    </div>
+                </form>
+                <p class="text-center"><a href="#">Create an Account</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <%- include('../partials/footer') %>
+
+</body>
+</html>
+

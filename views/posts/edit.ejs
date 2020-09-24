@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs', {title: "Edit Post"}) %>
+<body>
+    <!-- navbar -->
+    <%- include('../partials/nav.ejs') %>
+
+    <div class="submitPost">
+      <form class="post-edit" action="/posts/<%= post._id %>?_method=PUT" method="POST">
+            <h4>Editing Post: <%= post.title %></h4>
+            <div class="form-group">
+              <textarea class="form-control " name="body" rows="5"><%=post.body%></textarea>
+            </div>
+            <input type="text" name="user" class="form-control " value="<%=user.id%>" hidden>
+            <div class="submitbtn"> <input type="submit" class="btn btn-primary btn-sm" value="UPDATE POST"> </div>
+          </form>
+    </div>
+
+
+    <!-- footer -->
+    <%- include('../partials/footer') %>
+
+</body>
+</html>
+

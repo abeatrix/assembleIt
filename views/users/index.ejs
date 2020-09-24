@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="icon" type="image/png" href="https://i.ibb.co/RCV0S6R/shark.gif" />
-    <title>All Users</title>
-</head>
+    <%- include('../partials/head.ejs', {title: "All Users"}) %>
 <body>
+    <!-- navbar -->
+    <%- include('../partials/nav') %>
 
+
+    <div class='submitPost'>
+        <ul>
+            <li>List of Users</li>
+            <% users.forEach(user => { %>
+                <li>
+                    <a href="/users/<%= user._id %>">
+                        <%= user.username %>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+
+
+    <!-- footer -->
+    <%- include('../partials/footer') %>
 
 </body>
 </html>

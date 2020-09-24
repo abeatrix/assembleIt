@@ -1,0 +1,72 @@
+
+/* AUTH VIEWS */
+.form-control {
+	height: 41px;
+	background: #efefef;
+	border: none;
+}
+.form-control:focus {
+	background: #e3f2fd;
+}
+.form-control, .btn {
+	border-radius: 3px;
+}
+.auth-form {
+	width: 400px;
+	margin: 30px auto;
+}
+.auth-form h2, .auth-form p  {
+	text-align: center;
+}
+.auth-form .form-group {
+	margin-bottom: 20px;
+}
+.auth-form input[type="checkbox"] {
+	margin-top: 10px;
+}
+.auth-form .btn {
+	font-size: 16px;
+	font-weight: bold;
+	background: #3598dc;
+	border: none;
+	min-width: 140px;
+}
+.form-button {
+	text-align:center;
+}
+.auth-form .btn:hover, .auth-form .btn:focus {
+	background: #007CFF !important;
+	outline: none;
+}
+.auth-form a {
+	color: #fff;
+	text-decoration: underline;
+}
+.auth-form a:hover {
+	text-decoration: none;
+}
+.auth-form form a {
+	color: #007CFF;
+	text-decoration: none;
+}
+.auth-form form a:hover {
+	text-decoration: underline;
+}
+.signup-hint  {
+    padding-bottom: 15px;
+    font-size: 10px;
+	text-align: center;
+}
+.auth-form h4 {
+	margin: 50px auto 20px;
+}
+
+.error-msgs{
+	color: red;
+	text-align: center;
+}
+
+.error-404{
+	color: brown;
+	text-align: center;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs', {title: "Search Result"}) %>
+<body>
+    <!-- navbar -->
+    <%- include('../partials/nav') %>
+
+
+    <div class='submitPost'>
+        <h3><%= results.length %> Search result(s)</h3>
+        <ul>
+            <% for(let i = results.length-1; i >= 0; i--){ %>
+                <li>
+                    <div class="posts-Title">
+                        <a href="/posts/<%= results[i].id %>"> <%= results[i].title %></a>
+                        <br><small>Submitted <%= moment(results[i].createdAt).startOf('hour').fromNow(); %> by <%= results[i].username %> in <a href="/posts/r/<%= results[i].subreddit%>">r/<%= results[i].subreddit%></a></small>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+
+
+    <!-- footer -->
+    <%- include('../partials/footer') %>
+
+</body>
+</html>

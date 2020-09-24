@@ -1,0 +1,45 @@
+<script>
+
+$('#upvote_<%=id%>').click(function () {
+
+    if (!$("#upvote_<%=id%>").hasClass('on')){
+      if ($('#downvote_<%=id%>').hasClass('on')){
+        $('#downvote_<%=id%>').toggleClass("on");
+        $("#upvote_<%=id%>").toggleClass("on");
+
+        $(".down<%=id%>").css("color", "blue");
+
+        $.ajax({
+        url: "/posts/<%=id%>/up"
+        })
+        .done((data) => {
+        $("#votes_<%=id%>").text(data.votes);
+
+        $(".up<%=id%>").css("color", "red");
+      })
+      } else {
+          $("#upvote_<%=id%>").toggleClass('on');
+          $.ajax({
+          url: "/posts/<%=id%>/up"
+          })
+          .done((data) => {
+          $("#votes_<%=id%>").text(data.votes);
+          })
+
+          $(".up<%=id%>").css("color", "red");
+        }
+    }
+    else {
+      $("#upvote_<%=id%>").toggleClass('on');
+
+      $.ajax({
+      url: "/posts/<%=id%>/even"
+      })
+      .done((data) => {
+      $("#votes_<%=id%>").text(data.votes);
+    })
+    
+    $(".up<%=id%>").css("color", "blue");
+    }
+  });
+</script>

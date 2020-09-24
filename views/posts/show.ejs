@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs', {title: "Edit Post"}) %>
+<body>
+    <% console.log(user) %>
+    <!-- navbar -->
+    <%- include('../partials/nav.ejs') %>
+    <a id="top"></a>
+    <div class="submitPost post-show-container">
+      <!-- LEFT = VOTES BAR -->
+      <div class="post-show-left">
+        <div class="post-show-votes">
+
+          <button type="button" class="btn btn-link btn-sm" id="upvote_<%=post.id%>"><i class="fas fa-caret-up vote-icon up<%=post.id%>"></i></button>
+
+          <span id="votes_<%=post.id%>"><%= post.votes %></span>
+
+          <button type="button" class="btn btn-link btn-sm" id="downvote_<%=post.id%>"><i class="fas fa-caret-down vote-icon down<%=post.id%>"></i></button>
+
+          <%- include("../partials/upvotes.ejs", post) %>
+          <%- include("../partials/downvotes.ejs", post) %>
+
+          <% if(user){ %>
+            <% for(let j = 0; j < post.upvotes.length; j++){ %>
+              <% if(user.id == post.upvotes[j]){ %>
+                  <script>$(`#upvote_<%=post.id%>`).toggleClass("on") </script>
+                  <script>$(".up<%=post.id%>").css("color", "red")</script>
+              <% } %>
+            <% } %>
+      
+      
+      
+            <% for(let j = 0; j < post.downvotes.length; j++){ %>
+              <% if(user.id == post.downvotes[j]){ %>
+                  <script>$(`#downvote_<%=post.id%>`).toggleClass("on") </script>
+                  <script>$(".down<%=post.id%>").css("color", "red")</script>
+              <% } %>
+            <% } %>
+            <%}%>  
+
+        </div>
+      </div>
+
+      <!-- RIGHT = TITLE + BODY -->
+      <div class="post-show-right">
+        <h4 class="post-show-title"><%= post.title %></h4>
+        <div class="post-show-body"><pv><%=post.body%></pv></div>
+
+        <div class="post-show-edit">
+          <br><small>Submitted <%= moment(post.createdAt).fromNow(); %> by <a href="/users/<%= post.user %>"><%= post.username %></a> in
+            <a href="/posts/r/<%= post.subreddit%>">r/<%= post.subreddit%></a></small>
+
+          <%- include('../partials/sharebtn') %>
+
+          <% if(user == post.user){ %>
+          <form action="/posts/<%= post._id %>/edit">
+            <button type="submit" class="btn btn-link btn-sm">UPDATE</button>
+          </form> |
+          <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-link btn-sm">DELETE</button>
+          </form>
+          <% } %>
+        </div>
+      </div>
+
+      <a href="#comments">COMMENTS</a>
+
+    </div>
+
+        <!-- COMMENT SESSION -->
+        <a id="comments">
+          <div class="submitPost">
+            <!-- If there is no comment -->
+            <% if(comments.length === 0) { %>
+              <div class="submitPost"></div>
+              <div id="no-comment"><p>No Comments Yet.</p><p>Be the first to share your thoughts!</p></div>
+            <% } %>
+
+            <% if (user) { %>
+            <div class="submitComment">
+              <form action="/posts/comments" method="POST">
+                  <div class="form-group user-edit-form">
+                      <small>Comment as u/<%=user.username%></small>
+                      <input type="text" name="body" class="form-control" placeholder="What do you think?">
+                  </div>
+                  <input type="text" name="user" class="form-control" value="<%=user.id%>" hidden>
+                  <input type="text" name="post" class="form-control" value="<%=post.id%>" hidden>
+                  <div class="submitbtn"> <input type="submit" class="btn btn-primary btn-sm" value="COMMENT"> </div>
+                </form>
+            </div>
+            <% } %>
+            <div class='comments'>
+              <ul>
+                  <% for(let i=comments.length-1; i >= 0; i--){ %>
+                      <li>
+                        <%= comments[i][0].body %>
+                        <br><small>Submitted <%= moment(comments[i][0].createdAt).fromNow(); %> by <a href="../users/<%=comments[i][1]._id%>"><%=comments[i][1].username%></a> </small>
+                      </li>
+                  <% } %>
+                  <li><a href="#top"><i class="fas fa-arrow-up"></i> back to top</a></li>
+              </ul>
+            </div>
+          </div>
+        </a>
+
+    <!-- footer -->
+    <%- include('../partials/footer') %>
+
+</body>
+</html>

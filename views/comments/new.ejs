@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs', {title: "Make a Comment"}) %>
+<body>
+    <!-- navbar -->
+    <%- include('../partials/nav.ejs') %>
+
+    <div class="submitComment">
+        <form action="/posts/comments" method="POST">
+            <div class="form-group user-edit-form">
+                <label>Make a Comment</label>
+                <input type="text" name="body" class="form-control" placeholder="Comment">
+            </div>
+            <input type="text" name="user" class="form-control" value="<%=user.id%>" hidden>
+            <input type="text" name="post" class="form-control" value="<%=post.id%>" hidden>
+            <div class="submitbtn"> <input type="submit" class="btn btn-primary btn-sm" value="SUBMIT COMMENT"> </div>
+          </form>
+    </div>
+
+
+    <!-- footer -->
+    <%- include('../partials/footer') %>
+
+</body>
+</html>
