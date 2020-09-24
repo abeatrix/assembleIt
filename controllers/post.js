@@ -64,7 +64,7 @@ router.get("/newPost", (req, res) => {
     }
     res.render("posts/new.ejs", context);
   } catch (error) {
-    req.flash('error', error);
+    req.flash('error', "title mst be between 2-250 characters. body must be between 2-1000 characters. subreddit must be between 2-30 characters.");
     return res.redirect("404");                                                          // redirect to 404 Page if there is an error
   }
 });
@@ -80,7 +80,7 @@ router.get("/:id/newComment", async (req, res) => {
     }
     res.render("comments/new.ejs", context);
   } catch (error) {
-    req.flash('error', error);
+    req.flash('error', "comment must be between 2-1000 characters.");
     return res.redirect("404");                                                          // redirect to 404 Page if there is an error
   }
 });
@@ -250,7 +250,7 @@ router.get("/:id/down", async (req, res) => {
   try {
     const foundPost = await db.Post.findById(req.params.id);
     const foundUser = await db.User.findById(foundPost.user);
-    
+
     for(let i = 0; i < foundPost.upvotes.length; i++){
       if(req.session.currentUser.id == foundPost.upvotes[i]){
         foundPost.upvotes.splice(i,1);
