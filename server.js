@@ -73,7 +73,7 @@ app.use(function(req, res, next){
 //use rate limiting
 app.use(LIMIT);
 //HELMET - reset headers in response for security
-app.use(helmet());
+// app.use(helmet());
 // SANITIZE DATA coming in from req.body
 app.use(mongoSanitize());
 // logging
