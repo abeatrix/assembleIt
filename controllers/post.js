@@ -217,15 +217,21 @@ router.delete("/:id", async (req, res) => {
 router.get("/:id/up", async (req, res) => {
   try {
     const foundPost = await db.Post.findById(req.params.id);
+    const foundUser = await db.User.findById(foundPost.user);
 
     for(let i = 0; i < foundPost.downvotes.length; i++){
       if(req.session.currentUser.id == foundPost.downvotes[i]){
         foundPost.downvotes.splice(i,1);
         await foundPost.save();
+        foundUser.karma++;
+        await foundUser.save();
       }
     }
     foundPost.upvotes.push(req.session.currentUser.id);
     await foundPost.save();
+
+    foundUser.karma++;
+    await foundUser.save();
 
     const totalVotes = foundPost.upvotes.length - foundPost.downvotes.length;
     foundPost.votes = totalVotes;
@@ -243,15 +249,21 @@ router.get("/:id/up", async (req, res) => {
 router.get("/:id/down", async (req, res) => {
   try {
     const foundPost = await db.Post.findById(req.params.id);
+    const foundUser = await db.User.findById(foundPost.user);
     
     for(let i = 0; i < foundPost.upvotes.length; i++){
       if(req.session.currentUser.id == foundPost.upvotes[i]){
         foundPost.upvotes.splice(i,1);
         await foundPost.save();
+        foundUser.karma--;
+        await foundUser.save();
       }
     }
     foundPost.downvotes.push(req.session.currentUser.id);
     await foundPost.save();
+
+    foundUser.karma--;
+    await foundUser.save();
 
     const totalVotes = foundPost.upvotes.length - foundPost.downvotes.length;
     foundPost.votes = totalVotes;
@@ -270,17 +282,23 @@ router.get("/:id/down", async (req, res) => {
 router.get("/:id/even", async (req, res) => {
   try {
     const foundPost = await db.Post.findById(req.params.id);
-    
+    const foundUser = await db.User.findById(foundPost.user);
+
+
     for(let i = 0; i < foundPost.upvotes.length; i++){
       if(req.session.currentUser.id == foundPost.upvotes[i]){
         foundPost.upvotes.splice(i,1);
         await foundPost.save();
+        foundUser.karma--;
+        await foundUser.save();
       }
     }
     for(let i = 0; i < foundPost.downvotes.length; i++){
       if(req.session.currentUser.id == foundPost.downvotes[i]){
         foundPost.downvotes.splice(i,1);
         await foundPost.save();
+        foundUser.karma++;
+        await foundUser.save();
       }
     }
 
