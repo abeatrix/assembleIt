@@ -122,7 +122,7 @@ app.use(methodNotAllowed);
 
 
 // SERVER LISTENER
-app.listen(PORT, function () {
+app.listen(process.env.PORT || 3000, function () {
     console.log(`server up and running on PORT ${PORT}`)
 })
 
