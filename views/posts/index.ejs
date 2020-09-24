@@ -50,6 +50,7 @@
                         <%- include("../partials/upvotes.ejs", posts[i]) %>
                         <%- include("../partials/downvotes.ejs", posts[i]) %>
                         
+                        <% if(user){ %>
                         <% for(let j = 0; j < posts[i].upvotes.length; j++){ %>
                           <% if(user.id == posts[i].upvotes[j]){ %>
                               <script>$(`#upvote_<%=posts[i].id%>`).toggleClass("on") </script>
@@ -65,7 +66,7 @@
                               <script>$(".down<%=posts[i].id%>").css("color", "red")</script>
                           <% } %>
                         <% } %>
-
+                          <%}%>     
                       </span>
 
 
