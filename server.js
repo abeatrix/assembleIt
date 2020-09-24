@@ -17,6 +17,8 @@ const morgan = require("mongoose-morgan");
 /* INTERNAL MODULES */
 const db = require("./models");
 const controllers = require("./controllers");
+const {notFound, methodNotAllowed} = require("./middleware/responseHandlers")
+const authRequired = require("./middleware/authRequired")
 
 /* INSTANCED MODULES */
 const app = express();
@@ -84,13 +86,6 @@ app.use(morgan(morganOptions, {
 }, "dev"));
 // moment - formatting time
 app.locals.moment = require('moment');
-// AUTH
-const authRequired = (req, res, next) => {
-    if(!req.session.currentUser){
-        return res.redirect("/login");
-    }
-    next();
-}
 
 
 /* ROUTES */
@@ -120,7 +115,11 @@ app.use("/users", controllers.user);
 
 
 // POSTS ROUTES
-app.use("/posts", controllers.post);
+app.use("/posts", authRequired, controllers.post);
+
+// RESPONSE MIDDLEWARE
+app.get("/*", notFound);
+app.use(methodNotAllowed);
 
 
 // SERVER LISTENER
