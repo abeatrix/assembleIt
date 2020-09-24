@@ -7,17 +7,10 @@ $('#upvote_<%=id%>').click(function () {
         $('#downvote_<%=id%>').toggleClass("on");
         $("#upvote_<%=id%>").toggleClass("on");
 
-        $.ajax({
-        url: "/posts/<%= id%>/up"
-        })
-        .done((data) => {
-        $("#votes_<%=id%>").text(data.votes);
-        })
-
         $(".down<%=id%>").css("color", "blue");
 
         $.ajax({
-        url: "/posts/<%= id%>/up"
+        url: "/posts/<%=id%>/up"
         })
         .done((data) => {
         $("#votes_<%=id%>").text(data.votes);
@@ -27,7 +20,7 @@ $('#upvote_<%=id%>').click(function () {
       } else {
           $("#upvote_<%=id%>").toggleClass('on');
           $.ajax({
-          url: "/posts/<%= id%>/up"
+          url: "/posts/<%=id%>/up"
           })
           .done((data) => {
           $("#votes_<%=id%>").text(data.votes);
@@ -40,7 +33,7 @@ $('#upvote_<%=id%>').click(function () {
       $("#upvote_<%=id%>").toggleClass('on');
 
       $.ajax({
-      url: "/posts/<%= id%>/down"
+      url: "/posts/<%=id%>/even"
       })
       .done((data) => {
       $("#votes_<%=id%>").text(data.votes);
