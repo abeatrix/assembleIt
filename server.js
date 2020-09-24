@@ -10,6 +10,9 @@ const MongoStore = require("connect-mongo")(session);
 const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
 const mongoSanitize = require('express-mongo-sanitize');
+const cors = require("cors");
+// logging
+const morgan = require("mongoose-morgan");
 
 /* INTERNAL MODULES */
 const db = require("./models");
@@ -20,6 +23,13 @@ const app = express();
 
 /* CONFIGURATION*/
 
+const corsOptions = {
+    origin: ["https://assembleit.herokuapp.com/"], //set url for live app
+    optionsSuccessStatus: 200, //for legacy ports where some legacy browsers will choke on status 204
+
+}
+app.use(cors(corsOptions));
+
 // all uses of .env
 require("dotenv").config();
 const PORT = process.env.PORT;
@@ -29,7 +39,7 @@ app.set("view engine", "ejs")
 //RATE LIMIT SETUP
 const LIMIT = rateLimit({
     max: 10000,
-    windowMs: 24 * 60 * 60 * 1000 //limited to 10k requests per 1 day in millisecond
+    windowMs: 24 * 60 * 60 * 1000, //limited to 10k requests per 1 day in millisecond
     message: "Too many requests",
 });
 
@@ -63,9 +73,18 @@ app.use(LIMIT);
 app.use(helmet());
 // SANITIZE DATA coming in from req.body
 app.use(mongoSanitize());
-
+// logging
+const morganOptions = {
+    connectionString: process.env.MONGODB_URI,
+}
+app.use(morgan(morganOptions, {
+    skip: function(req, res){ //adding this for tracking error only
+        return res.statusCode < 400;
+    }
+}, "dev"));
+// moment - formatting time
 app.locals.moment = require('moment');
-
+// AUTH
 const authRequired = (req, res, next) => {
     if(!req.session.currentUser){
         return res.redirect("/login");

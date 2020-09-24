@@ -59,6 +59,8 @@ Registered users:
 - Express Rate Limit
 - helmet.js
 - express-mongo-sanitize
+- CORS (cross origin resource sharing)
+- mongoose-morgan
 
 
 ## Version 0.1
