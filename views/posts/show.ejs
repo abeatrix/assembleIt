@@ -17,26 +17,9 @@
 
           <button type="button" class="btn btn-link btn-sm" id="downvote_<%=post.id%>"><i class="fas fa-caret-down vote-icon down<%=post.id%>"></i></button>
 
-          <%- include("../partials/upvotes.ejs", post) %>
-          <%- include("../partials/downvotes.ejs", post) %>
-
           <% if(user){ %>
-            <% for(let j = 0; j < post.upvotes.length; j++){ %>
-              <% if(user.id == post.upvotes[j]){ %>
-                  <script>$(`#upvote_<%=post.id%>`).toggleClass("on") </script>
-                  <script>$(".up<%=post.id%>").css("color", "red")</script>
-              <% } %>
-            <% } %>
-      
-      
-      
-            <% for(let j = 0; j < post.downvotes.length; j++){ %>
-              <% if(user.id == post.downvotes[j]){ %>
-                  <script>$(`#downvote_<%=post.id%>`).toggleClass("on") </script>
-                  <script>$(".down<%=post.id%>").css("color", "red")</script>
-              <% } %>
-            <% } %>
-            <%}%>  
+            <%- include("../partials/votecheck.ejs", {post: post, user: user.id}) %>
+          <%}%>  
 
         </div>
       </div>

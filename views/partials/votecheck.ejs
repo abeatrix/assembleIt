@@ -1,14 +1,108 @@
+<script>
 
-    <% for(let i = 0; i < post.upvotes.length; i++){ %>
-        <% if(currentUser == post.upvotes[i]){ %>
-            <script data-id="<%= post.id%>">$(`#upvote_${document.currentScript.getAttribute('data-id')}`).toggleClass("on"); </script>
-        <% } %>
+    $('#downvote_<%=post.id%>').click(function () {
+
+        if (!$('#downvote_<%=post.id%>').hasClass('on')){
+            if ($("#upvote_<%=post.id%>").hasClass('on')){
+                $("#upvote_<%=post.id%>").toggleClass("on");
+                $('#downvote_<%=post.id%>').toggleClass("on");
+
+                $(".up<%=post.id%>").css("color", "blue");
+
+                $.ajax({
+                url: "/posts/<%= post.id%>/down"
+                })
+                .done((data) => {
+                $("#votes_<%=post.id%>").text(data.votes);
+                });
+
+                $(".down<%=post.id%>").css("color", "red");
+
+            } else {
+                $('#downvote_<%=post.id%>').toggleClass('on');
+
+                $.ajax({
+                url: "/posts/<%= post.id%>/down"
+                })
+                .done((data) => {
+                $("#votes_<%=post.id%>").text(data.votes);
+                });
+
+                $(".down<%=post.id%>").css("color", "red");
+            }
+  
+        } else {
+            $('#downvote_<%=post.id%>').toggleClass('on');
+
+            $.ajax({
+            url: "/posts/<%= post.id%>/even"
+            })
+            .done((data) => {
+            $("#votes_<%=post.id%>").text(data.votes);
+            });
+
+            $(".down<%=post.id%>").css("color", "blue");
+        }
+    });
+
+
+    $('#upvote_<%=post.id%>').click(function () {
+
+        if (!$("#upvote_<%=post.id%>").hasClass('on')){
+            if ($('#downvote_<%=post.id%>').hasClass('on')){
+                $('#downvote_<%=post.id%>').toggleClass("on");
+                $("#upvote_<%=post.id%>").toggleClass("on");
+
+                $(".down<%=post.id%>").css("color", "blue");
+
+                $.ajax({
+                url: "/posts/<%=post.id%>/up"
+                })
+                .done((data) => {
+                $("#votes_<%=post.id%>").text(data.votes);
+                
+                $(".up<%=post.id%>").css("color", "red");
+                })
+            } else {
+                $("#upvote_<%=post.id%>").toggleClass('on');
+                $.ajax({
+                url: "/posts/<%=post.id%>/up"
+                })
+                .done((data) => {
+                $("#votes_<%=post.id%>").text(data.votes);
+                })
+
+                $(".up<%=post.id%>").css("color", "red");
+            }
+        }
+        else {
+            $("#upvote_<%=post.id%>").toggleClass('on');
+
+            $.ajax({
+            url: "/posts/<%=post.id%>/even"
+            })
+            .done((data) => {
+            $("#votes_<%=post.id%>").text(data.votes);
+            })
+
+            $(".up<%=post.id%>").css("color", "blue");
+        }
+    });
+</script>
+
+
+<% for(let j = 0; j < post.upvotes.length; j++){ %>
+    <% if(user == post.upvotes[j]){ %>
+        <script>$(`#upvote_<%=post.id%>`).toggleClass("on") </script>
+        <script>$(".up<%=post.id%>").css("color", "red")</script>
     <% } %>
+<% } %>
 
 
 
-    <% for(let i = 0; i < post.downvotes.length; i++){ %>
-        <% if(currentUser == post.downvotes[i]){ %>
-            <script data-id="<%= post.id%>">$(`#upvote_${document.currentScript.getAttribute('data-id')}`).toggleClass("on"); </script>
-        <% } %>
+<% for(let j = 0; j < post.downvotes.length; j++){ %>
+    <% if(user == post.downvotes[j]){ %>
+        <script>$(`#downvote_<%=post.id%>`).toggleClass("on") </script>
+        <script>$(".down<%=post.id%>").css("color", "red")</script>
     <% } %>
+<% } %>
