@@ -51,8 +51,8 @@ router.get("/:id", (req, res) => {
             return res.send(err);
         }
         const context = {
-            user: foundUser,
-            currentUser: req.session.currentUser,
+            thisUser: foundUser,
+            user: req.session.currentUser,
          };
         res.render("users/profile", context);
     });

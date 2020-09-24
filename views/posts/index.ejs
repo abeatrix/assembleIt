@@ -47,26 +47,27 @@
 
                         <button type="button" class="btn btn-link btn-sm" id="upvote_<%=posts[i].id%>"><i class="fas fa-caret-right vote-icon up<%=posts[i].id%>"></i></button>
 
+                        <% if(user){ %>
                         <%- include("../partials/upvotes.ejs", posts[i]) %>
                         <%- include("../partials/downvotes.ejs", posts[i]) %>
-                        
-                        <% if(user){ %>
+
+
                         <% for(let j = 0; j < posts[i].upvotes.length; j++){ %>
                           <% if(user.id == posts[i].upvotes[j]){ %>
                               <script>$(`#upvote_<%=posts[i].id%>`).toggleClass("on") </script>
                               <script>$(".up<%=posts[i].id%>").css("color", "red")</script>
                           <% } %>
                         <% } %>
-                  
-                  
-                  
+
+
+
                         <% for(let j = 0; j < posts[i].downvotes.length; j++){ %>
                           <% if(user.id == posts[i].downvotes[j]){ %>
                               <script>$(`#downvote_<%=posts[i].id%>`).toggleClass("on") </script>
                               <script>$(".down<%=posts[i].id%>").css("color", "red")</script>
                           <% } %>
                         <% } %>
-                          <%}%>     
+                          <%}%>
                       </span>
 
 

@@ -16,23 +16,23 @@
                     <div class='profile-posts-list'>
 
                         <!-- If there is no post -->
-                        <% if(user.posts.length === 0) { %>
+                        <% if(thisUser.posts.length === 0) { %>
                             <div class="profile-nopost">You don't have any post yet <i class="far fa-frown"></i></div>
                         <% } %>
 
                         <!-- show newest post first -->
                         <ul>
-                            <% for(let i = user.posts.length-1; i >= 0; i--){ %>
+                            <% for(let i = thisUser.posts.length-1; i >= 0; i--){ %>
                                 <li>
                                     <article class="articlePost">
-                                        <a href="/posts/<%= user.posts[i]._id %>"> <%= user.posts[i].title %> </a>
+                                        <a href="/posts/<%= thisUser.posts[i]._id %>"> <%= thisUser.posts[i].title %> </a>
                                         <div class="submitbtn">
-                                            <small>Submitted on: <%= moment(user.posts[i].createdAt).fromNow(); %></small>
-                                            <% if(user.username === currentUser.username) { %>
-                                            <form action="/posts/<%= user.posts[i]._id %>/edit">
+                                            <small>Submitted on: <%= moment(thisUser.posts[i].createdAt).fromNow(); %></small>
+                                            <% if(thisUser.username === user.username) { %>
+                                            <form action="/posts/<%= thisUser.posts[i]._id %>/edit">
                                                 <button type="submit" class="btn btn-link btn-sm pull-left"><small>EDIT</small></button>
                                             </form>
-                                            <form action="/posts/<%= user.posts[i]._id %>?_method=DELETE" method="POST" onclick="return confirm('Are you sure you wish to delete this post?');">
+                                            <form action="/posts/<%= thisUser.posts[i]._id %>?_method=DELETE" method="POST" onclick="return confirm('Are you sure you wish to delete this post?');">
                                                 <button type="submit" class="btn btn-link btn-sm pull-left delete-btn"><small>DELETE</small></button>
                                             </form>
                                             <% } %>
@@ -48,17 +48,17 @@
             <div class="profile-right">
                 <div class="profile-user">
                     <h4>PROFILE</h4>
-                    <p class="profile-pic"><img src="<%= user.profilePic %>" style="width:200px;height:200px;"></p>
-                    <p><b>username:</b> <%= user.username %></p>
-                    <p><b>karma:</b> <%= user.karma %></p>
-                    <p><b>cakeday:</b> <%= moment(user.createdAt).format("MMM Do YY"); %></p>
-                    <% console.log(user._id)%>
-                    <% if(user.username === currentUser.username) { %>
+                    <p class="profile-pic"><img src="<%= thisUser.profilePic %>" style="width:200px;height:200px;"></p>
+                    <p><b>username:</b> <%= thisUser.username %></p>
+                    <p><b>karma:</b> <%= thisUser.karma %></p>
+                    <p><b>cakeday:</b> <%= moment(thisUser.createdAt).format("MMM Do YY"); %></p>
+                    <% console.log(thisUser._id)%>
+                    <% if(thisUser.username === user.username) { %>
                         <div class="profile-form-btn">
-                        <form action="/users/<%= user._id %>/edit">
+                        <form action="/users/<%= thisUser._id %>/edit">
                             <button type="submit" class="btn btn-link btn-sm"><small>EDIT INFO</small></button>
                         </form>
-                        <form action="/users/<%= user._id %>/deactivate">
+                        <form action="/users/<%= thisUser._id %>/deactivate">
                             <button type="submit" class="btn btn-link btn-sm"><small>DELETE ACCOUNT</small></button>
                         </form>
                     </div>

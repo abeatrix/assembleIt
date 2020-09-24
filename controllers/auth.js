@@ -64,10 +64,10 @@ router.post("/login", async (req, res) => {
             return res.redirect("login");
         }
 
-        if(!foundUser.isVerified){
-            req.flash('error', "Email is not verified. Please verify your email in your inbox before continue.");
-            return res.redirect("login");
-        }
+        // if(!foundUser.isVerified){
+        //     req.flash('error', "Email is not verified. Please verify your email in your inbox before continue.");
+        //     return res.redirect("login");
+        // }
 
         const match = await bcrypt.compare(req.body.password, foundUser.password);          // if user exist then compare login info with db
 
