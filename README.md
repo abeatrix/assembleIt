@@ -55,6 +55,13 @@ Registered users:
 - sweet alert
 - express session
 - bcrypt
+- req-flash
+- Express Rate Limit
+- helmet.js
+- express-mongo-sanitize
+- CORS (cross origin resource sharing)
+- mongoose-morgan
+
 
 ## Version 0.1
 <img src="https://i.ibb.co/k6DmtG5/image.png" alt="image" border="0">

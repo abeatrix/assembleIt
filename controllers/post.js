@@ -41,7 +41,7 @@ router.get("/r", async (req, res) => {
   }
 });
 
-// subreddit index route
+// subreddit show route
 router.get("/r/:subreddit", async (req, res) => {
   try {
     const foundPosts = await db.Post.find({subreddit: req.params.subreddit});
