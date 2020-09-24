@@ -12,7 +12,12 @@ const controllers = require("./controllers");
 
 /* INSTANCED MODULES */
 const app = express();
-const PORT = 3000;
+
+/* Configuration */
+//all use of .env
+
+require("dotenv").config();
+const PORT = process.env.PORT;
 
 app.set("view engine", "ejs")
 
@@ -23,9 +28,9 @@ app.use(methodOverride("_method"));
 app.use(session({
     resave: false,
     saveUninitialized: false,
-    secret: "AverageAssemble",
+    secret: process.env.SECRET,
     store: new MongoStore({
-        url: "mongodb://localhost:27017/reddit-sessions"
+        url: process.env.MONGODB_URI || "mongodb://localhost:27017/reddit-sessions"
     }),
     cookie: {
         maxAge: 1000 * 60 * 60 * 60 * 24 * 7 * 2
@@ -85,3 +90,5 @@ app.use("/posts", controllers.post);
 app.listen(PORT, function () {
     console.log(`server up and running on PORT ${PORT}`)
 })
+
+

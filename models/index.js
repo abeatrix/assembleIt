@@ -1,7 +1,11 @@
 //HUB FOR MODELS AND DB CONNECTIONS
 const mongoose = require('mongoose');
 
-const connectionString = 'mongodb://localhost:27017/assembleIt-db';
+
+require("dotenv").config(); //USE .ENV FILE
+const connectionString = process.env.MONGODB_URI || 'mongodb://localhost:27017/assembleIt-db';
+
+
 
 mongoose.connect(connectionString, {
     useNewUrlParser: true,
