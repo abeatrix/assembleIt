@@ -27,7 +27,7 @@
                                     <article class="articlePost">
                                         <a href="/posts/<%= user.posts[i]._id %>"> <%= user.posts[i].title %> </a>
                                         <div class="submitbtn">
-                                            <small>Submitted on: <%= moment(user.posts[i].createdAt).startOf('hour').fromNow(); %></small>
+                                            <small>Submitted: <%= moment(user.posts[i].createdAt).startOf('hour').fromNow(); %></small>
                                             <% if(user.username === currentUser.username) { %>
                                             <form action="/posts/<%= user.posts[i]._id %>/edit">
                                                 <button type="submit" class="btn btn-link btn-sm pull-left"><small>EDIT</small></button>
@@ -48,7 +48,7 @@
             <div class="profile-right">
                 <div class="profile-user">
                     <h4>PROFILE</h4>
-                    <p><img src="<%= user.profilePic %>" style="width:200px;height:200px;"></p>
+                    <p class="profile-pic"><img src="<%= user.profilePic %>" style="width:200px;height:200px;"></p>
                     <p><b>username:</b> <%= user.username %></p>
                     <p><b>karma:</b> <%= user.karma %></p>
                     <p><b>cakeday:</b> <%= moment(user.createdAt).format("MMM Do YY"); %></p>
