@@ -17,6 +17,8 @@ const morgan = require("mongoose-morgan");
 /* INTERNAL MODULES */
 const db = require("./models");
 const controllers = require("./controllers");
+const {notFound, methodNotAllowed} = require("./middleware/responseHandlers")
+const authRequired = require("./middleware/authRequired")
 
 /* INSTANCED MODULES */
 const app = express();
@@ -71,7 +73,7 @@ app.use(function(req, res, next){
 //use rate limiting
 app.use(LIMIT);
 //HELMET - reset headers in response for security
-// app.use(helmet());
+//app.use(helmet());
 // SANITIZE DATA coming in from req.body
 app.use(mongoSanitize());
 // logging
@@ -85,13 +87,6 @@ app.use(morgan(morganOptions, {
 }, "dev"));
 // moment - formatting time
 app.locals.moment = require('moment');
-// AUTH
-const authRequired = (req, res, next) => {
-    if(!req.session.currentUser){
-        return res.redirect("/login");
-    }
-    next();
-}
 
 
 /* ROUTES */
@@ -115,13 +110,15 @@ app.get("/", async (req, res) => {
 // AUTH ROUTES
 app.use("/", controllers.auth);
 
-
 // USER ROUTES
 app.use("/users", controllers.user);
 
-
 // POSTS ROUTES
-app.use("/posts", controllers.post);
+app.use("/posts", authRequired, controllers.post);
+
+// RESPONSE MIDDLEWARE
+app.get("/*", notFound);
+app.use(methodNotAllowed);
 
 
 // SERVER LISTENER

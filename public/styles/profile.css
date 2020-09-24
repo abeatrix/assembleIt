@@ -12,7 +12,7 @@
 }
 .profile-right{
 	background-color: #e3f2fd;
-	flex: 3;
+	flex: 2;
 	max-height: 500px;
 	margin: 10px;
 	padding: 20px;
@@ -20,7 +20,10 @@
 }
 
 .profile-user h4{
-	margin-bottom: 30px;
+	margin-bottom: 10px;
+}
+.profile-pic{
+	text-align: center;
 }
 
 .profile-posts-list {

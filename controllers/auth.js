@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 const bcrypt = require("bcryptjs");
+const users = require("../controllers/user")
+const nodemailer = require('nodemailer');
 
 /* BASE PATH */
 // REGISTER FORM
@@ -15,23 +17,31 @@ router.get("/404", (req, res) => {
 });
 
 
-// REGISTER POST
+// REGISTER USER
 router.post("/signup", async (req, res) => {
     try {
         const foundUser = await db.User.findOne({ username: req.body.username });
+        const foundEmail = await db.User.findOne({ email: req.body.email });
+
         if(foundUser){                                                                        // if username exists
             req.flash('error', '*Username Exists');
             return res.redirect("signup");
         }
+
+        if(foundEmail){                                                                        // if email exists
+            req.flash('error', '*Email is already registered');
+            return res.redirect("signup");
+        }
+
         const salt = await bcrypt.genSalt(10);
 
-        const hash = await bcrypt.hash(req.body.password, salt);
+        const hash = await bcrypt.hash(req.body.password, salt);                             // hash password
         req.body.password = hash;
 
-        await db.User.create(req.body);
+        await db.User.create(req.body);                                                      // create User
 
         res.redirect("/login");                                                              // redirect to login
-    } catch(err) {
+    } catch(error) {
         req.flash('error', 'Sign up error');
         return res.redirect("404");                                                          // redirect to 404 Page if there is an error
     }
@@ -51,6 +61,11 @@ router.post("/login", async (req, res) => {
 
         if(!foundUser){                                                                     // if user does not exist => error
             req.flash('error', "User does not exist");
+            return res.redirect("login");
+        }
+
+        if(!foundUser.isVerified){
+            req.flash('error', "Email is not verified. Please verify your email in your inbox before continue.");
             return res.redirect("login");
         }
 
@@ -81,6 +96,17 @@ router.delete("/logout", async (req, res) => {
 })
 
 
+//TOKEN ROUTES
+// router.get("/confirmation", (req, res) => {
+//     res.render("auth/confirmation", {user: req.session.currentUser});
+// });
 
+// router.post('/confirmation', users.confirmationPost);
+
+
+// router.get("/resend", (req, res) => {
+//     res.render("auth/resend", {user: req.session.currentUser});
+// });
+// router.post('/resend', users.resendTokenPost);
 
 module.exports = router;

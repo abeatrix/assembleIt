@@ -8,17 +8,12 @@
 
     <div class='submitPost'>
         <ul>
+            <li>List of Users</li>
             <% users.forEach(user => { %>
                 <li>
                     <a href="/users/<%= user._id %>">
                         <%= user.username %>
                     </a>
-                    <form action="/users/<%= user._id %>/edit">
-                        <button type="submit" class="btn btn-link btn-sm pull-left">UPDATE</button>
-                    </form>
-                    <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
-                        <button type="submit" class="btn btn-link btn-sm pull-left">DELETE</button>
-                    </form>
                 </li>
             <% }) %>
         </ul>
