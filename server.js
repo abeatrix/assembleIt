@@ -18,6 +18,7 @@ app.set("view engine", "ejs")
 
 // MIDDLEWARE
 app.use(express.static(path.join(__dirname, "public")));
+
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use(session({

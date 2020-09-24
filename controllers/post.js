@@ -217,7 +217,18 @@ router.delete("/:id", async (req, res) => {
 router.get("/:id/up", async (req, res) => {
   try {
     const foundPost = await db.Post.findById(req.params.id);
-    foundPost.votes += 1;
+
+    for(let i = 0; i < foundPost.downvotes.length; i++){
+      if(req.session.currentUser.id == foundPost.downvotes[i]){
+        foundPost.downvotes.splice(i,1);
+        await foundPost.save();
+      }
+    }
+    foundPost.upvotes.push(req.session.currentUser.id);
+    await foundPost.save();
+
+    const totalVotes = foundPost.upvotes.length - foundPost.downvotes.length;
+    foundPost.votes = totalVotes;
     await foundPost.save();
 
     res.json(foundPost);
@@ -232,7 +243,49 @@ router.get("/:id/up", async (req, res) => {
 router.get("/:id/down", async (req, res) => {
   try {
     const foundPost = await db.Post.findById(req.params.id);
-    foundPost.votes -= 1;
+    
+    for(let i = 0; i < foundPost.upvotes.length; i++){
+      if(req.session.currentUser.id == foundPost.upvotes[i]){
+        foundPost.upvotes.splice(i,1);
+        await foundPost.save();
+      }
+    }
+    foundPost.downvotes.push(req.session.currentUser.id);
+    await foundPost.save();
+
+    const totalVotes = foundPost.upvotes.length - foundPost.downvotes.length;
+    foundPost.votes = totalVotes;
+    await foundPost.save();
+
+    res.json(foundPost);
+  } catch {
+    console.log(error)
+    req.flash('error', error);
+    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
+  }
+
+});
+
+// even route
+router.get("/:id/even", async (req, res) => {
+  try {
+    const foundPost = await db.Post.findById(req.params.id);
+    
+    for(let i = 0; i < foundPost.upvotes.length; i++){
+      if(req.session.currentUser.id == foundPost.upvotes[i]){
+        foundPost.upvotes.splice(i,1);
+        await foundPost.save();
+      }
+    }
+    for(let i = 0; i < foundPost.downvotes.length; i++){
+      if(req.session.currentUser.id == foundPost.downvotes[i]){
+        foundPost.downvotes.splice(i,1);
+        await foundPost.save();
+      }
+    }
+
+    const totalVotes = foundPost.upvotes.length - foundPost.downvotes.length;
+    foundPost.votes = totalVotes;
     await foundPost.save();
 
     res.json(foundPost);
