@@ -42,7 +42,7 @@ router.post("/signup", async (req, res) => {
 
         res.redirect("/login");                                                              // redirect to login
     } catch(error) {
-        req.flash('error', 'Sign up error');
+        req.flash('error', 'Your Username must be between 4 - 12 characters.');
         return res.redirect("404");                                                          // redirect to 404 Page if there is an error
     }
 });
