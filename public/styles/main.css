@@ -9,7 +9,7 @@ body {
 /* STLYES FOR HOME PAGE */
 .posts, .submitPost {
     margin: auto;
-    width: 60%;
+    width: 80%;
     padding: 10px;
     background-color: white;
 }

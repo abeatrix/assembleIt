@@ -6,6 +6,7 @@ const users = require("../controllers/user")
 const nodemailer = require('nodemailer');
 
 /* BASE PATH */
+
 // REGISTER FORM
 router.get("/signup", (req, res) => {
     res.render("auth/signup", {user: req.session.currentUser});
@@ -64,11 +65,6 @@ router.post("/login", async (req, res) => {
             return res.redirect("login");
         }
 
-        // if(!foundUser.isVerified){
-        //     req.flash('error', "Email is not verified. Please verify your email in your inbox before continue.");
-        //     return res.redirect("login");
-        // }
-
         const match = await bcrypt.compare(req.body.password, foundUser.password);          // if user exist then compare login info with db
 
         if(!match){                                                                         //if login info doesn't match db
@@ -84,7 +80,7 @@ router.post("/login", async (req, res) => {
         res.redirect("/")                                                                   // redirect to home after logged-in
     } catch(err) {
         req.flash('error', err);
-        return res.redirect("404");                                                          // redirect to 404 Page if there is an error
+        return res.redirect("404");                                                         // redirect to 404 Page if there is an error
     }
 })
 
@@ -92,21 +88,8 @@ router.post("/login", async (req, res) => {
 // LOGOUT / DELETE SESSION
 router.delete("/logout", async (req, res) => {
     await req.session.destroy();
-    res.redirect("/");                                                                  // redirect to home after logged-out
+    res.redirect("/");                                                                      // redirect to home after logged-out
 })
 
-
-//TOKEN ROUTES
-// router.get("/confirmation", (req, res) => {
-//     res.render("auth/confirmation", {user: req.session.currentUser});
-// });
-
-// router.post('/confirmation', users.confirmationPost);
-
-
-// router.get("/resend", (req, res) => {
-//     res.render("auth/resend", {user: req.session.currentUser});
-// });
-// router.post('/resend', users.resendTokenPost);
 
 module.exports = router;
