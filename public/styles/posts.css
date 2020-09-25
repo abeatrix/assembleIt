@@ -13,7 +13,7 @@ small{
 	display: flex;
 }
 
-/* VOST OTES */
+/* VOTES */
 .post-show-left{
     flex: 1;
     display: flex;
@@ -91,4 +91,21 @@ small{
     text-align: center;
     margin-top: 50px;
     color: #989898;
+}
+
+/* LIST OF SUBS */
+.subs-list h3{
+    margin-top: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+
+/* SHARE BUTTONS */
+
+    #share-buttons {
+        float: right;
+        text-align: right;
+        min-width: 100px;
+        margin-left: 200px;
+    }
 }

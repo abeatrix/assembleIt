@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema(
   {
-    title: { type: String, required: true, minlength: 2, maxlength: 250 },
+    title: { type: String, required: true, minlength: 2, maxlength: 55 },
     body: { type: String, required: true, minlength: 2, maxlength: 1000 },
     votes: { type: Number, default: 0 },
     subreddit: { type: String, minlength: 2, maxlength: 30},

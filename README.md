@@ -4,7 +4,8 @@
   </a>
 </h1>
 <p align="center">
-    A messaging board with node.js with MongoDB, inspired by the popular website Reddit.<br>
+    <p>A messaging board built with node.js using MongoDB, inspired by the popular website Reddit.</p>
+    <p>Origin: Since we have heard how much people dislike using slack in class, and doubt that any of our classmates will keep using Slack after the cohort, the main goal for us is to build a place where people can build communities and grow as a group; hence the idea of making a reddit-clone for the cohort. Moreover, the creators of this project are both very fond of reddit and would like to learn more about how a large scale website like Reddit works behind the scenes. </p>
     <a href="https://assembleit.herokuapp.com/">Link to assembleIt</a>
 </p>
 
@@ -52,13 +53,18 @@ Registered users are:
 - Views Styling
 
 ## Stretch Goals
-- sub-communities
+- sub-communities (completed)
 - display pictures in posts
-- comments section
+- comments section  (completed)
 - light/dark mode
-- upvote system
-- user profile pictures
+- upvote system  (completed)
+- user profile pictures (completed)
 - dropdown menus
+- option to add pictures to posts
+- display pictures in posts
+- a proper word editor for post submission
+- keep the format of the posts
+- mobile friendly
 <img src="https://i.ibb.co/74T5t25/assemble-It-WF-010.png" alt="assemble-It-WF-010" border="0">
 
 ## Technologies Used
