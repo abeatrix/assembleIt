@@ -84,7 +84,7 @@ router.post("/login", async (req, res) => {
         res.redirect("/")                                                                   // redirect to home after logged-in
     } catch(err) {
         req.flash('error', err);
-        return res.redirect("404");                                                          // redirect to 404 Page if there is an error
+        return res.redirect("404");                                                         // redirect to 404 Page if there is an error
     }
 })
 
@@ -92,7 +92,7 @@ router.post("/login", async (req, res) => {
 // LOGOUT / DELETE SESSION
 router.delete("/logout", async (req, res) => {
     await req.session.destroy();
-    res.redirect("/");                                                                  // redirect to home after logged-out
+    res.redirect("/");                                                                      // redirect to home after logged-out
 })
 
 
