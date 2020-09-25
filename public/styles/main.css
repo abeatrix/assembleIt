@@ -6,6 +6,11 @@ body {
     background-color: whitesmoke;
 }
 
+/* NAVBAR */
+.navbar{
+    width: 100%;
+
+}
 /* STLYES FOR HOME PAGE */
 .posts, .submitPost {
     margin: auto;
@@ -118,10 +123,7 @@ form {
     }
 
     .posts-Vote {
-        flex: 0.5;
-        max-width: 30px;
-        min-width: 20px;
-        text-align: left;
+        display: none;
     }
 
     .vote-btn {
