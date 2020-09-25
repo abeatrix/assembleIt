@@ -69,15 +69,17 @@ form {
     flex: 1.5;
     margin: auto;
     text-align: left;
+    min-width: 65px;
 }
 .posts-Title {
     flex: 6.5;
+    min-width: 550px;
 }
 
 .posts-Comment {
     flex: 2;
     text-align: right;
-    margin: auto 20px;
+    min-width: 130px;
 }
 
 .fas {
@@ -100,3 +102,49 @@ form {
     80%{color: #007CFF;}
     100%{color: #c3edf7;}
 }
+
+
+@media only screen and (max-width: 600px) {
+
+    .posts, .submitPost {
+        width: 500px;
+    }
+
+    .post-container{
+        display: flex;
+        max-width: 450px;
+        max-height: 150px;
+        margin: 10px auto;
+    }
+
+    .posts-Vote {
+        flex: 0.5;
+        max-width: 30px;
+        min-width: 20px;
+        text-align: left;
+    }
+
+    .vote-btn {
+        display: none;
+    }
+
+    .posts-Title {
+        flex: 9;
+        min-width: 300px;
+        max-width: 300px;
+        max-height: 200px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .posts-Comment {
+        flex: 0.5;
+        text-align: right;
+        min-width: 20px;
+    }
+
+    .comments-text{
+        display: none
+    }
+
+  }

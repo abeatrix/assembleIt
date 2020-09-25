@@ -121,9 +121,9 @@ router.post("/", async (req, res) => {
   } catch (error) {
     console.log(error);
     req.flash('error1', "Name of subreddit must be between 2-30 characters");
-    req.flash('error2', "Title must be between 2-100 characters");
+    req.flash('error2', "Title must be between 2-50 characters");
     req.flash('error3', "Context must be between 2-1000 characters");
-    return res.redirect("/");                                                          // redirect to 404 Page if there is an error
+    return res.redirect("/");                                                             // redirect to index Page with error msgs if there is an error
   }
 });
 
