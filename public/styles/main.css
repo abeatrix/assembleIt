@@ -9,8 +9,9 @@ body {
 /* NAVBAR */
 .navbar{
     width: 100%;
-
 }
+
+
 /* STLYES FOR HOME PAGE */
 .posts, .submitPost {
     margin: auto;
@@ -110,6 +111,15 @@ form {
 
 
 @media only screen and (max-width: 600px) {
+
+    .signupFrontPage  {
+        font-size: 30px
+    }
+
+    .signupFrontPage:hover {
+        letter-spacing: 2px;
+        font-weight: bold;
+    }
 
     .posts, .submitPost {
         width: 500px;

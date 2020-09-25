@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand" style="background-color: #e3f2fd;">
+<nav class="navbar sticky-top navbar-expand" style="background-color: #e3f2fd;">
     <a class="navbar-brand" href="/">
         <img src="https://i.ibb.co/RCV0S6R/shark.gif" width="30" height="30" class="d-inline-block align-top" alt="">
         assembleIt
@@ -8,16 +8,13 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-
-            </li>
         </ul>
         <!-- Search Bar -->
         <form action="/posts/search" method="GET" class="form-inline">
             <input class="form-control mr-sm-2" type="text" name="results" placeholder="Search" aria-label="Search Topics">
         </form>
 
-        <span class="navbar-text">
+        <span">
             <% if(user) { %>
                 <a href="/users/<%=user.id%>"><i class="fas fa-user"></i> <%=user.username%></a>
                 <form action='/logout?_method=DELETE' method='POST'>
