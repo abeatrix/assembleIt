@@ -8,7 +8,7 @@ body {
 
 /* NAVBAR */
 .navbar{
-    width: 100%;
+
 }
 
 
@@ -112,6 +112,9 @@ form {
 
 @media only screen and (max-width: 600px) {
 
+    .navbar {
+        width: 133%;
+    }
     .signupFrontPage  {
         font-size: 30px
     }
