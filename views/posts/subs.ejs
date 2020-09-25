@@ -8,11 +8,14 @@
     <!-- navbar -->
     <%- include('../partials/nav.ejs') %>
     <a id="top"></a>
-    <div class='submitPost'>
-        <h3>list of subs</h3>
-        <% for(let i = 0; i<subreddits.length; i++){ %>
-            <small><a href="/r/<%=subreddits[i]%>"> <%=subreddits[i]%> </a></small>
-        <% } %>
+    <div class="submitPost subs-list">
+        <h3>A list of existing communities</h3>
+        <ul>
+            <% for(let i = 0; i<subreddits.length; i++){ %>
+                <li><p><a href="/r/<%=subreddits[i]%>"> <%=subreddits[i]%> </a></p></li>
+            <% } %>
+            <li id="backtotop"><a href="#top"><i class="fas fa-arrow-up"></i> back to top</a></li>
+        </ul>
     </div>
 
 
