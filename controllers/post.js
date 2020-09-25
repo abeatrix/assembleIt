@@ -106,7 +106,7 @@ router.post("/comments", async (req, res) => {
   }
 });
 
-// create route
+// create post route
 router.post("/", async (req, res) => {
   try {
     const foundUser = await db.User.findById(req.body.user);
@@ -120,8 +120,10 @@ router.post("/", async (req, res) => {
     res.redirect(`/posts/r/${req.body.subreddit}`);
   } catch (error) {
     console.log(error);
-    req.flash('error', error);
-    return res.redirect("404");                                                          // redirect to 404 Page if there is an error
+    req.flash('error1', "Name of subreddit must be between 2-30 characters");
+    req.flash('error2', "Title must be between 2-50 characters");
+    req.flash('error3', "Context must be between 2-1000 characters");
+    return res.redirect("/");                                                             // redirect to index Page with error msgs if there is an error
   }
 });
 
