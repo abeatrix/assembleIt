@@ -111,7 +111,7 @@ app.get("/", async (req, res) => {
 app.use("/", controllers.auth);
 
 // USER ROUTES
-app.use("/users", controllers.user);
+app.use("/users", authRequired, controllers.user);
 
 // POSTS ROUTES
 app.use("/posts", authRequired, controllers.post);
