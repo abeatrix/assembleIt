@@ -62,6 +62,8 @@ Registered users are:
 - dropdown menus
 - option to add pictures to posts
 - display pictures in posts
+- a proper word editor for post submission
+- keep the format of the posts
 <img src="https://i.ibb.co/74T5t25/assemble-It-WF-010.png" alt="assemble-It-WF-010" border="0">
 
 ## Technologies Used
