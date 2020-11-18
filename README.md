@@ -4,6 +4,11 @@
   </a>
 </h1>
 <p align="center">
+<p align="center"><a href="https://assembleit.herokuapp.com/">Link to AssembleIt</a></p>
+<p align="center">Username: demouser | Password: Demo2020
+</p>
+
+<p align="center">
     <p>A messaging board built with node.js using MongoDB, inspired by the popular website Reddit.</p>
     <p>Origin: Since we have heard how much people dislike using slack in class, and doubt that any of our classmates will keep using Slack after the cohort, the main goal for us is to build a place where people can build communities and grow as a group; hence the idea of making a reddit-clone for the cohort. Moreover, the creators of this project are both very fond of reddit and would like to learn more about how a large scale website like Reddit works behind the scenes. </p>
     <a href="https://assembleit.herokuapp.com/">Link to assembleIt</a>
