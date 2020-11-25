@@ -6,7 +6,7 @@ const commentSchema = new mongoose.Schema(
     votes: { type: Number, default: 0 },
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     post: { type: mongoose.Schema.Types.ObjectId, ref: "Post" }
-    // comments: { type: mongoose.Schema.Types.ObjectId, ref: "Comment" }
+    // replies: { type: mongoose.Schema.Types.ObjectId, ref: "Comment" }
   },
   {
     timestamps: true,
